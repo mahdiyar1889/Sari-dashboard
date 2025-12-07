@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>شناسانامه پروژه‌های بالقوه - داشبورد مدیریتی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- فونت فارسی -->
+  <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/Farsi-Digits/style.css" rel="stylesheet">
+
+  <!-- Chart.js برای نمودارها -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Vazirmatn FD", sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      padding: 32px 40px 48px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .divider {
+      height: 4px;
+      background: #3f3d9b;
+      margin: 24px 0 32px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #262f87;
+      margin: 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 12px;
+    }
+
+    .meta {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .card {
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      padding: 16px 18px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .card-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #262f87;
+    }
+
+    .card-extra {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      border-right: 4px solid #3f3d9b;
+      padding-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .charts-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .chart-card {
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      padding: 16px 18px;
+      min-height: 260px;
+    }
+
+    .chart-title {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .search-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
+    .search-row label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    thead {
+      background: #262f87;
+      color: #fff;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    tbody tr:hover {
+      background: #ececff;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: #e0e0ff;
+      color: #262f87;
+    }
+
+    .tag-low {
+      background: #e3f2fd;
+      color: #1e88e5;
+    }
+    .tag-medium {
+      background: #fff3e0;
+      color: #fb8c00;
+    }
+    .tag-high {
+      background: #ffebee;
+      color: #c62828;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        margin: 16px;
+        padding: 20px 16px 28px;
+      }
+
+      .cards-row,
+      .charts-row {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        flex-direction: row-reverse;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- هدر با لوگوها -->
+  <div class="header">
+    <!-- لوگوی چپ (مشاور) -->
+    <img src="logo-left.png" alt="لوگوی مشاور">
+    <!-- لوگوی راست (سازمان/شرکت) -->
+    <img src="logo-right.png" alt="لوگوی کارفرما">
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- عنوان اصلی -->
+  <h1>شناسانامه پروژه‌های بالقوه</h1>
+  <p class="subtitle">گزارش مدیریتی و تحلیلی شهرک نمک‌آبرود</p>
+  <p class="meta">
+    بر اساس طرح بهنگام - ویرایش ششم - تابستان ۱۴۰۴
+  </p>
+
+  <!-- کارت‌های خلاصه -->
+  <div class="cards-row">
+    <div class="card">
+      <div class="card-title">تعداد کل پروژه‌ها</div>
+      <div class="card-value" id="total-projects">۱۲</div>
+      <div class="card-extra">در چهار حوزه کاربری مختلف</div>
+    </div>
+    <div class="card">
+      <div class="card-title">جمع برآورد سرمایه‌گذاری</div>
+      <div class="card-value" id="total-budget">۲٬۴۵۰ میلیارد تومان</div>
+      <div class="card-extra">شامل پروژه‌های اولویت‌دار و پشتیبان</div>
+    </div>
+    <div class="card">
+      <div class="card-title">پروژه‌های اولویت‌دار</div>
+      <div class="card-value" id="priority-projects">۵</div>
+      <div class="card-extra">با اثرگذاری مستقیم در ارتقای کیفیت خدمات</div>
+    </div>
+  </div>
+
+  <!-- نمودارها -->
+  <div class="section">
+    <h2 class="section-title">نمای کلی پروژه‌ها</h2>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">سرمایه‌گذاری پیشنهادی به تفکیک حوزه کاربری (میلیارد تومان)</div>
+        <canvas id="budgetByCategoryChart"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">وضعیت پروژه‌ها</div>
+        <canvas id="statusChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- جدول پروژه‌ها -->
+  <div class="section">
+    <h2 class="section-title">فهرست پروژه‌های بالقوه</h2>
+
+    <div class="search-row">
+      <label for="projectSearch">جستجو در پروژه‌ها:</label>
+      <input id="projectSearch" class="search-input" placeholder="نام پروژه، کاربری، وضعیت، اولویت و..." />
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table id="projectsTable">
+        <thead>
+          <tr>
+            <th>ردیف</th>
+            <th>عنوان پروژه</th>
+            <th>کاربری / حوزه</th>
+            <th>برآورد سرمایه‌گذاری (میلیارد تومان)</th>
+            <th>وضعیت</th>
+            <th>اولویت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ردیف‌های نمونه - این‌ها را با داده‌های واقعی خودت عوض کن -->
+          <tr>
+            <td>۱</td>
+            <td>تکمیل زیرساخت‌های گردشگری محور ساحل</td>
+            <td>گردشگری</td>
+            <td>۴۵۰</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۲</td>
+            <td>ایجاد مجموعه اقامتی و پذیرایی ساحلی</td>
+            <td>گردشگری</td>
+            <td>۳۲۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۳</td>
+            <td>احداث پارک شهری و فضای سبز مرکزی</td>
+            <td>فضای سبز و محیط زیست</td>
+            <td>۱۸۰</td>
+            <td>در حال اجرا</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۴</td>
+            <td>بهسازی شبکه معابر و دسترسی‌ها</td>
+            <td>زیرساخت شهری</td>
+            <td>۳۹۰</td>
+            <td>در حال اجرا</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۵</td>
+            <td>ایجاد مرکز خدمات رفاهی و فرهنگی</td>
+            <td>خدمات و فرهنگی</td>
+            <td>۲۶۰</td>
+            <td>در دست تصویب</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۶</td>
+            <td>ساماندهی پارکینگ‌ها و حمل‌ونقل درون‌شهری</td>
+            <td>حمل‌ونقل</td>
+            <td>۱۵۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۷</td>
+            <td>توسعه روشنایی و مبلمان شهری</td>
+            <td>زیرساخت شهری</td>
+            <td>۹۵</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۸</td>
+            <td>ایجاد مجموعه ورزشی و تفریحی</td>
+            <td>خدمات و فرهنگی</td>
+            <td>۲۸۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۹</td>
+            <td>توسعه و نوسازی تأسیسات زیربنایی</td>
+            <td>زیرساخت شهری</td>
+            <td>۳۲۰</td>
+            <td>در دست تصویب</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۱۰</td>
+            <td>سامان‌دهی ورودی‌های شهرک</td>
+            <td>زیرساخت شهری</td>
+            <td>۱۳۵</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۱۱</td>
+            <td>ایجاد مرکز نوآوری و خدمات استارتاپی</td>
+            <td>اقتصادی / خدماتی</td>
+            <td>۲۲۰</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۱۲</td>
+            <td>توسعه مسیرهای پیاده و دوچرخه</td>
+            <td>حمل‌ونقل</td>
+            <td>۱۵۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // داده‌های نمونه برای نمودارها – این‌ها را با داده‌های واقعی خودت عوض کن
+  const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
+  const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
+
+  const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
+  const statusCounts = [5, 3, 2, 2];
+
+  // نمودار ستونی سرمایه‌گذاری به تفکیک حوزه
+  const budgetCtx = document.getElementById("budgetByCategoryChart").getContext("2d");
+  new Chart(budgetCtx, {
+    type: "bar",
+    data: {
+      labels: categories,
+      datasets: [{
+        label: "سرمایه‌گذاری (میلیارد تومان)",
+        data: budgets
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return " " + context.parsed.y.toLocaleString("fa-IR") + " میلیارد تومان";
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value.toLocaleString("fa-IR");
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // نمودار دایره‌ای وضعیت پروژه‌ها
+  const statusCtx = document.getElementById("statusChart").getContext("2d");
+  new Chart(statusCtx, {
+    type: "doughnut",
+    data: {
+      labels: statusLabels,
+      datasets: [{
+        data: statusCounts
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom"
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return " " + context.label + ": " + context.parsed.toLocaleString("fa-IR") + " پروژه";
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // جستجو در جدول پروژه‌ها
+  const searchInput = document.getElementById("projectSearch");
+  searchInput.addEventListener("input", function () {
+    const term = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#projectsTable tbody tr");
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(term) ? "" : "none";
+    });
+  });
+</script>
+
+</body>
+</html>
