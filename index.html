@@ -23,6 +23,74 @@
       color: #222;
     }
 
+    /* ---------- صفحه‌ی مقدمه (اینترواِسپلش) ---------- */
+
+    .intro-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f8ff;
+      padding: 32px 16px;
+    }
+
+    .intro-card {
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      background: #ffffff;
+      padding: 40px 32px 32px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .intro-logo-main {
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+
+    .intro-title {
+      font-size: 32px;
+      line-height: 1.6;
+      margin: 0;
+      color: #1c2f91;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .intro-title:hover {
+      color: #007bff; /* آبی شدن عنوان روی hover */
+    }
+
+    .intro-caption {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .intro-footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+
+    .intro-footer-logos img {
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .intro-meta {
+      font-size: 13px;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    /* ---------- صفحه اصلی داشبورد ---------- */
+
     .page {
       max-width: 1200px;
       margin: 32px auto;
@@ -223,12 +291,48 @@
       h1 {
         font-size: 28px;
       }
+
+      .intro-card {
+        padding: 32px 20px 24px;
+      }
+
+      .intro-title {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="page">
+<!-- ===== صفحه مقدمه ===== -->
+<div id="introPage" class="intro-page">
+  <div class="intro-card">
+    <!-- لوگوی اصلی بالای صفحه‌ی مقدمه -->
+    <img src="logo-main.png" alt="نمک آبرود" class="intro-logo-main">
+
+    <!-- عنوان قابل کلیک -->
+    <h1 id="introTitle" class="intro-title">
+      اطلس سرمایه‌گذاری<br>
+      شهرک توریستی نمک آبرود
+    </h1>
+
+    <p class="intro-caption">
+      برای مشاهده فهرست، روی عنوان بالا کلیک کنید
+    </p>
+
+    <div class="intro-footer-logos">
+      <img src="logo-consultant.png" alt="مشاور">
+      <img src="logo-employer.png" alt="کارفرما">
+    </div>
+
+    <p class="intro-meta">
+      تهیه شده توسط مهندسین مشاور ایده‌پرداز محیط – شهریورماه ۱۴۰۴
+    </p>
+  </div>
+</div>
+
+<!-- ===== صفحه اصلی داشبورد (ابتدا مخفی است) ===== -->
+<div class="page" id="mainPage" style="display:none;">
 
   <!-- هدر با لوگوها -->
   <div class="header">
@@ -244,7 +348,7 @@
   <h1>شناسانامه شهرداری ساری</h1>
   <p class="subtitle">گزارش مدیریتی</p>
   <p class="meta">
-     پاییز ۱۴۰۴
+    پاییز ۱۴۰۴
   </p>
 
   <!-- کارت‌های خلاصه -->
@@ -305,7 +409,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- ردیف‌های نمونه - این‌ها را با داده‌های واقعی خودت عوض کن -->
           <tr>
             <td>۱</td>
             <td>تکمیل زیرساخت‌های گردشگری محور ساحل</td>
@@ -410,7 +513,18 @@
 </div>
 
 <script>
-  // داده‌های نمونه برای نمودارها – این‌ها را با داده‌های واقعی خودت عوض کن
+  // تغییر صفحه از مقدمه به داشبورد
+  const introTitle = document.getElementById("introTitle");
+  const introPage = document.getElementById("introPage");
+  const mainPage  = document.getElementById("mainPage");
+
+  introTitle.addEventListener("click", function () {
+    introPage.style.display = "none";
+    mainPage.style.display = "block";
+    window.scrollTo(0, 0);
+  });
+
+  // داده‌های نمونه برای نمودارها
   const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
   const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
 
