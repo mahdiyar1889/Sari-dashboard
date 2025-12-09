@@ -100,6 +100,104 @@
     }
 
     /* ======================================================
+       صفحه فهرست مطالب
+       ====================================================== */
+
+    .toc-page {
+      min-height: 100vh;
+      background: #e7edf4;
+      padding: 24px 24px 32px;
+      display: none; /* در ابتدا پنهان است */
+    }
+
+    .toc-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #f5f8fc;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      padding: 24px 24px 32px;
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #dde3ee;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .toc-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2b3c;
+    }
+
+    .toc-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #4b5b73;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .toc-back:hover {
+      background: #dde5f2;
+      color: #1f2b3c;
+    }
+
+    .toc-back-arrow {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 12px;
+    }
+
+    .toc-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 16px rgba(15, 35, 90, 0.08);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .toc-card:hover {
+      transform: translateY(-3px);
+      background: #fdfefe;
+      box-shadow: 0 10px 22px rgba(15, 35, 90, 0.12);
+    }
+
+    .toc-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #18253b;
+      margin-bottom: 8px;
+    }
+
+    .toc-card-subtitle {
+      font-size: 14px;
+      color: #6a768c;
+    }
+
+    .toc-footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #707b90;
+    }
+
+    /* ======================================================
        صفحه اصلی داشبورد
        ====================================================== */
 
@@ -109,6 +207,7 @@
       background: #fff;
       box-shadow: 0 0 20px rgba(0,0,0,0.08);
       padding: 32px 40px 48px;
+      display: none; /* اول مخفی است */
     }
 
     .header {
@@ -292,7 +391,8 @@
       }
 
       .cards-row,
-      .charts-row {
+      .charts-row,
+      .toc-grid {
         grid-template-columns: 1fr;
       }
 
@@ -315,15 +415,13 @@
   </style>
 </head>
 
-
 <body>
 
 <!-- ======================================================
-     صفحه مقدمه (Intro)
+     صفحه مقدمه
      ====================================================== -->
 <div id="introPage" class="intro-page">
   <div class="intro-card">
-
     <div class="intro-top-label">نمک آبرود</div>
 
     <img src="logo-main.png" alt="لوگو" class="intro-logo-main">
@@ -345,15 +443,66 @@
     <p class="intro-meta">
       تهیه شده توسط مهندسین مشاور ایده‌پرداز محیط – شهریورماه ۱۴۰۴
     </p>
+  </div>
+</div>
+
+<!-- ======================================================
+     صفحه فهرست مطالب
+     ====================================================== -->
+<div id="tocPage" class="toc-page">
+  <div class="toc-container">
+
+    <div class="toc-header">
+      <div class="toc-title">فهرست مطالب</div>
+      <div class="toc-back" id="tocBack">
+        <span>بازگشت</span>
+        <span class="toc-back-arrow">➔</span>
+      </div>
+    </div>
+
+    <div class="toc-grid">
+      <div class="toc-card">
+        <div class="toc-card-title">داشبورد مدیریتی درآمدهای مسکونی</div>
+        <div class="toc-card-subtitle">تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی</div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
+        <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-card-title">گزارش مدیریتی و تحلیلی شناخت</div>
+        <div class="toc-card-subtitle">تحلیل وضعیت موجود و پتانسیل‌ها</div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
+        <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
+        <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
+      </div>
+
+      <div class="toc-card">
+        <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
+        <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
+      </div>
+    </div>
+
+    <div class="toc-footer">
+      اطلس سرمایه‌گذاری شهرک توریستی نمک آبرود
+    </div>
 
   </div>
 </div>
 
-
 <!-- ======================================================
-     صفحه داشبورد (مخفی در شروع)
+     صفحه داشبورد اصلی
      ====================================================== -->
-<div class="page" id="mainPage" style="display:none;">
+<div class="page" id="mainPage">
 
   <div class="header">
     <img src="logo-left.jpg" alt="مشاور">
@@ -373,13 +522,11 @@
       <div class="card-value" id="total-projects">1</div>
       <div class="card-extra">در چهار حوزه کاربری مختلف</div>
     </div>
-
     <div class="card">
       <div class="card-title">جمع برآورد سرمایه‌گذاری</div>
       <div class="card-value" id="total-budget">۲٬۴۵۰ میلیارد تومان</div>
       <div class="card-extra">شامل پروژه‌های اولویت‌دار و پشتیبان</div>
     </div>
-
     <div class="card">
       <div class="card-title">پروژه‌های اولویت‌دار</div>
       <div class="card-value" id="priority-projects">۵</div>
@@ -420,60 +567,227 @@
             <th>ردیف</th>
             <th>عنوان پروژه</th>
             <th>کاربری / حوزه</th>
-            <th>سرمایه‌گذاری (میلیارد تومان)</th>
+            <th>برآورد سرمایه‌گذاری (میلیارد تومان)</th>
             <th>وضعیت</th>
             <th>اولویت</th>
           </tr>
         </thead>
         <tbody>
-          <!-- داده نمونه -->
-          <tr><td>۱</td><td>تکمیل گردشگری</td><td>گردشگری</td><td>۴۵۰</td><td>مطالعه</td><td><span class="tag tag-high">بالا</span></td></tr>
-          <tr><td>۲</td><td>مجموعه اقامتی</td><td>گردشگری</td><td>۳۲۰</td><td>پیشنهادی</td><td><span class="tag tag-medium">متوسط</span></td></tr>
+          <tr>
+            <td>۱</td>
+            <td>تکمیل زیرساخت‌های گردشگری محور ساحل</td>
+            <td>گردشگری</td>
+            <td>۴۵۰</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۲</td>
+            <td>ایجاد مجموعه اقامتی و پذیرایی ساحلی</td>
+            <td>گردشگری</td>
+            <td>۳۲۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۳</td>
+            <td>احداث پارک شهری و فضای سبز مرکزی</td>
+            <td>فضای سبز و محیط زیست</td>
+            <td>۱۸۰</td>
+            <td>در حال اجرا</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۴</td>
+            <td>بهسازی شبکه معابر و دسترسی‌ها</td>
+            <td>زیرساخت شهری</td>
+            <td>۳۹۰</td>
+            <td>در حال اجرا</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۵</td>
+            <td>ایجاد مرکز خدمات رفاهی و فرهنگی</td>
+            <td>خدمات و فرهنگی</td>
+            <td>۲۶۰</td>
+            <td>در دست تصویب</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۶</td>
+            <td>ساماندهی پارکینگ‌ها و حمل‌ونقل درون‌شهری</td>
+            <td>حمل‌ونقل</td>
+            <td>۱۵۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۷</td>
+            <td>توسعه روشنایی و مبلمان شهری</td>
+            <td>زیرساخت شهری</td>
+            <td>۹۵</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۸</td>
+            <td>ایجاد مجموعه ورزشی و تفریحی</td>
+            <td>خدمات و فرهنگی</td>
+            <td>۲۸۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۹</td>
+            <td>توسعه و نوسازی تأسیسات زیربنایی</td>
+            <td>زیرساخت شهری</td>
+            <td>۳۲۰</td>
+            <td>در دست تصویب</td>
+            <td><span class="tag tag-high">بالا</span></td>
+          </tr>
+          <tr>
+            <td>۱۰</td>
+            <td>سامان‌دهی ورودی‌های شهرک</td>
+            <td>زیرساخت شهری</td>
+            <td>۱۳۵</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
+          <tr>
+            <td>۱۱</td>
+            <td>ایجاد مرکز نوآوری و خدمات استارتاپی</td>
+            <td>اقتصادی / خدماتی</td>
+            <td>۲۲۰</td>
+            <td>در دست مطالعه</td>
+            <td><span class="tag tag-low">کم</span></td>
+          </tr>
+          <tr>
+            <td>۱۲</td>
+            <td>توسعه مسیرهای پیاده و دوچرخه</td>
+            <td>حمل‌ونقل</td>
+            <td>۱۵۰</td>
+            <td>پیشنهادی</td>
+            <td><span class="tag tag-medium">متوسط</span></td>
+          </tr>
         </tbody>
       </table>
     </div>
-
+  </div>
 </div>
-
 
 <!-- ======================================================
      اسکریپت‌ها
      ====================================================== -->
 <script>
-  const introTitle = document.getElementById("introTitle");
   const introPage = document.getElementById("introPage");
+  const tocPage   = document.getElementById("tocPage");
   const mainPage  = document.getElementById("mainPage");
 
+  const introTitle = document.getElementById("introTitle");
+  const tocBack    = document.getElementById("tocBack");
+
+  // از اینترُو به فهرست مطالب
   introTitle.addEventListener("click", function () {
     introPage.style.display = "none";
-    mainPage.style.display = "block";
+    tocPage.style.display   = "block";
+    mainPage.style.display  = "none";
     window.scrollTo(0, 0);
   });
 
-  // نمودار نمونه
-  const categories = ["گردشگری", "فضای سبز", "زیرساخت", "خدمات", "حمل‌ونقل"];
-  const budgets    = [770, 180, 940, 540, 300];
-
-  new Chart(document.getElementById("budgetByCategoryChart"), {
-    type: "bar",
-    data: { labels: categories, datasets: [{ data: budgets }] },
-    options: { responsive: true }
+  // بازگشت از فهرست مطالب به صفحه ورود
+  tocBack.addEventListener("click", function () {
+    introPage.style.display = "block";
+    tocPage.style.display   = "none";
+    mainPage.style.display  = "none";
+    window.scrollTo(0, 0);
   });
 
-  const statusLabels = ["پیشنهادی", "مطالعه", "تصویب", "اجرا"];
+  // کلیک روی هر کارت = رفتن به داشبورد
+  document.querySelectorAll(".toc-card").forEach(card => {
+    card.addEventListener("click", function () {
+      introPage.style.display = "none";
+      tocPage.style.display   = "none";
+      mainPage.style.display  = "block";
+      window.scrollTo(0, 0);
+    });
+  });
+
+  // داده‌های نمونه برای نمودارها
+  const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
+  const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
+
+  const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
   const statusCounts = [5, 3, 2, 2];
 
-  new Chart(document.getElementById("statusChart"), {
-    type: "doughnut",
-    data: { labels: statusLabels, datasets: [{ data: statusCounts }] },
-    options: { responsive: true }
+  // نمودار ستونی
+  const budgetCtx = document.getElementById("budgetByCategoryChart").getContext("2d");
+  new Chart(budgetCtx, {
+    type: "bar",
+    data: {
+      labels: categories,
+      datasets: [{
+        label: "سرمایه‌گذاری (میلیارد تومان)",
+        data: budgets
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return " " + context.parsed.y.toLocaleString("fa-IR") + " میلیارد تومان";
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value.toLocaleString("fa-IR");
+            }
+          }
+        }
+      }
+    }
   });
 
+  // نمودار دایره‌ای
+  const statusCtx = document.getElementById("statusChart").getContext("2d");
+  new Chart(statusCtx, {
+    type: "doughnut",
+    data: {
+      labels: statusLabels,
+      datasets: [{
+        data: statusCounts
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return " " + context.label + ": " + context.parsed.toLocaleString("fa-IR") + " پروژه";
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // جستجو در جدول پروژه‌ها
   const searchInput = document.getElementById("projectSearch");
   searchInput.addEventListener("input", function () {
     const term = this.value.toLowerCase();
-    document.querySelectorAll("#projectsTable tbody tr").forEach(row => {
-      row.style.display = row.innerText.toLowerCase().includes(term) ? "" : "none";
+    const rows = document.querySelectorAll("#projectsTable tbody tr");
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(term) ? "" : "none";
     });
   });
 </script>
