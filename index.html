@@ -32,7 +32,7 @@
     }
 
     /* ======================================================
-       دکمه بازگشت مشترک همه صفحات داخلی
+       دکمه بازگشت مشترک
        ====================================================== */
     .back-button {
       display: inline-flex;
@@ -60,6 +60,14 @@
       border-bottom: 2px solid #4b5b73;
       transform: rotate(-45deg);  /* شکل > */
       margin-top: 1px;
+    }
+
+    /* دکمه بازگشت که در گوشه چپ بالا ثابت باشد */
+    .back-global {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
     }
 
     /* ======================================================
@@ -147,6 +155,7 @@
       background: #e7edf4;
       padding: 24px 24px 32px;
       display: none; /* اول پنهان */
+      position: relative;         /* برای back-global */
     }
 
     .toc-container {
@@ -161,7 +170,7 @@
     .toc-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       border-bottom: 1px solid #dde3ee;
       padding-bottom: 16px;
       margin-bottom: 24px;
@@ -226,13 +235,7 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.08);
       padding: 32px 40px 48px;
       display: none; /* در ابتدا پنهان */
-    }
-
-    .dash-top {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 16px;
+      position: relative;         /* برای back-global */
     }
 
     .header {
@@ -456,7 +459,7 @@
 
       .toc-header {
         flex-direction: row-reverse;
-        justify-content: space-between;
+        justify-content: flex-start;
       }
 
       .toc-title {
@@ -560,15 +563,17 @@
      صفحه فهرست مطالب
 ====================================================== -->
 <div id="tocPage" class="toc-page">
+
+  <!-- دکمه بازگشت گوشه چپ بالا -->
+  <div class="back-button back-global" id="tocBack">
+    <span>بازگشت</span>
+    <span class="back-arrow"></span>
+  </div>
+
   <div class="toc-container">
 
     <div class="toc-header">
       <div class="toc-title">فهرست مطالب</div>
-      <!-- دکمه بازگشت بالا-چپ -->
-      <div class="back-button" id="tocBack">
-        <span>بازگشت</span>
-        <span class="back-arrow"></span>
-      </div>
     </div>
 
     <div class="toc-grid">
@@ -615,12 +620,10 @@
 ====================================================== -->
 <div class="page" id="mainPage">
 
-  <!-- ردیف بالایی برای دکمه بازگشت -->
-  <div class="dash-top">
-    <div class="back-button" id="dashboardBack">
-      <span>بازگشت</span>
-      <span class="back-arrow"></span>
-    </div>
+  <!-- دکمه بازگشت گوشه چپ بالا -->
+  <div class="back-button back-global" id="dashboardBack">
+    <span>بازگشت</span>
+    <span class="back-arrow"></span>
   </div>
 
   <div class="header">
