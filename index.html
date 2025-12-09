@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>داشبورد مدیریتی شهرداری سازی</title>
+  <title>داشبورد مدیریتی شهرداری ساری</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- فونت فارسی -->
@@ -21,6 +21,31 @@
       font-family: "Vazirmatn FD", sans-serif;
       background: #f5f5f5;
       color: #222;
+    }
+
+    /* ======================================================
+       دکمه بازگشت مشترک همه صفحات داخلی
+       ====================================================== */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #4b5b73;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .back-button:hover {
+      background: #dde5f2;
+      color: #1f2b3c;
+    }
+
+    .back-arrow {
+      font-size: 18px;
+      line-height: 1;
     }
 
     /* ======================================================
@@ -107,7 +132,7 @@
       min-height: 100vh;
       background: #e7edf4;
       padding: 24px 24px 32px;
-      display: none; /* در ابتدا پنهان است */
+      display: none; /* اول پنهان */
     }
 
     .toc-container {
@@ -132,28 +157,6 @@
       font-size: 24px;
       font-weight: 700;
       color: #1f2b3c;
-    }
-
-    .toc-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: #4b5b73;
-      cursor: pointer;
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .toc-back:hover {
-      background: #dde5f2;
-      color: #1f2b3c;
-    }
-
-    .toc-back-arrow {
-      font-size: 18px;
-      line-height: 1;
     }
 
     .toc-grid {
@@ -207,7 +210,14 @@
       background: #fff;
       box-shadow: 0 0 20px rgba(0,0,0,0.08);
       padding: 32px 40px 48px;
-      display: none; /* اول مخفی است */
+      display: none; /* در ابتدا پنهان */
+    }
+
+    .dash-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* با RTL: اولی راست، دومی چپ */
+      margin-bottom: 16px;
     }
 
     .header {
@@ -454,9 +464,10 @@
 
     <div class="toc-header">
       <div class="toc-title">فهرست مطالب</div>
-      <div class="toc-back" id="tocBack">
+      <!-- دکمه بازگشت بالا-چپ -->
+      <div class="back-button" id="tocBack">
         <span>بازگشت</span>
-        <span class="toc-back-arrow">➔</span>
+        <span class="back-arrow">➔</span>
       </div>
     </div>
 
@@ -503,6 +514,15 @@
      صفحه داشبورد اصلی
      ====================================================== -->
 <div class="page" id="mainPage">
+
+  <!-- ردیف بالایی برای دکمه بازگشت -->
+  <div class="dash-top">
+    <div></div> <!-- فقط برای قرار گرفتن دکمه سمت چپ -->
+    <div class="back-button" id="dashboardBack">
+      <span>بازگشت</span>
+      <span class="back-arrow">➔</span>
+    </div>
+  </div>
 
   <div class="header">
     <img src="logo-left.jpg" alt="مشاور">
@@ -685,8 +705,9 @@
 
   const introTitle = document.getElementById("introTitle");
   const tocBack    = document.getElementById("tocBack");
+  const dashboardBack = document.getElementById("dashboardBack");
 
-  // از اینترُو به فهرست مطالب
+  // از اینترو به فهرست مطالب
   introTitle.addEventListener("click", function () {
     introPage.style.display = "none";
     tocPage.style.display   = "block";
@@ -702,7 +723,15 @@
     window.scrollTo(0, 0);
   });
 
-  // کلیک روی هر کارت = رفتن به داشبورد
+  // بازگشت از داشبورد به فهرست مطالب
+  dashboardBack.addEventListener("click", function () {
+    introPage.style.display = "none";
+    tocPage.style.display   = "block";
+    mainPage.style.display  = "none";
+    window.scrollTo(0, 0);
+  });
+
+  // کلیک روی هر کارت فهرست = رفتن به داشبورد
   document.querySelectorAll(".toc-card").forEach(card => {
     card.addEventListener("click", function () {
       introPage.style.display = "none";
@@ -714,7 +743,7 @@
 
   // داده‌های نمونه برای نمودارها
   const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
-  const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
+  const budgets = [770, 180, 940, 540, 300, 220];
 
   const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
   const statusCounts = [5, 3, 2, 2];
