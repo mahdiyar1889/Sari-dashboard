@@ -16,9 +16,6 @@
     }
   </style>
 
-  <!-- Chart.js برای نمودارها (برای صفحه داشبورد، اگر بعداً استفاده کنی) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <style>
     * {
       box-sizing: border-box;
@@ -32,7 +29,7 @@
     }
 
     /* ======================================================
-       دکمه بازگشت مشترک
+       دکمه بازگشت
        ====================================================== */
     .back-button {
       display: inline-flex;
@@ -60,14 +57,6 @@
       border-bottom: 2px solid #4b5b73;
       transform: rotate(-45deg);  /* شکل > */
       margin-top: 1px;
-    }
-
-    /* دکمه بازگشت که در گوشه چپ بالا ثابت باشد (برای فهرست و داشبورد) */
-    .back-global {
-      position: absolute;
-      top: 8px;
-      left: 35px;
-      z-index: 10;
     }
 
     /* ======================================================
@@ -155,7 +144,6 @@
       background: #e7edf4;
       padding: 24px 24px 32px;
       display: none; /* اول پنهان */
-      position: relative;         /* برای back-global */
     }
 
     .toc-container {
@@ -170,7 +158,7 @@
     .toc-header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between; /* عنوان راست، دکمه چپ */
       border-bottom: 1px solid #dde3ee;
       padding-bottom: 16px;
       margin-bottom: 24px;
@@ -225,196 +213,7 @@
     }
 
     /* ======================================================
-       صفحه اصلی داشبورد (اگر خواستی استفاده کنی)
-       ====================================================== */
-
-    .page {
-      max-width: 1200px;
-      margin: 32px auto;
-      background: #fff;
-      box-shadow: 0 0 20px rgba(0,0,0,0.08);
-      padding: 32px 40px 48px;
-      display: none; /* در ابتدا پنهان */
-      position: relative;         /* برای back-global */
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .header img {
-      height: 80px;
-      object-fit: contain;
-      margin-top: 20px;   /* لوگوها کمی پایین‌تر */
-    }
-
-    .divider {
-      height: 4px;
-      background: #3f3d9b;
-      margin: 24px 0 32px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      color: #262f87;
-      margin: 0;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 18px;
-      margin-top: 12px;
-    }
-
-    .meta {
-      text-align: center;
-      margin-top: 16px;
-      font-size: 14px;
-      color: #666;
-    }
-
-    .cards-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .card {
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
-      background: #fafafa;
-      padding: 16px 18px;
-    }
-
-    .card-title {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 6px;
-    }
-
-    .card-value {
-      font-size: 22px;
-      font-weight: 700;
-      color: #262f87;
-    }
-
-    .card-extra {
-      font-size: 12px;
-      color: #888;
-      margin-top: 6px;
-    }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      border-right: 4px solid #3f3d9b;
-      padding-right: 10px;
-      margin-bottom: 16px;
-    }
-
-    .charts-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .chart-card {
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
-      background: #fafafa;
-      padding: 16px 18px;
-      min-height: 260px;
-    }
-
-    .chart-title {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 6px;
-    }
-
-    .search-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 12px;
-      align-items: center;
-    }
-
-    .search-row label {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .search-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 14px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border-radius: 12px;
-      overflow: hidden;
-      font-size: 13px;
-    }
-
-    thead {
-      background: #262f87;
-      color: #fff;
-    }
-
-    th, td {
-      padding: 10px 8px;
-      text-align: right;
-      border-bottom: 1px solid #eee;
-    }
-
-    tbody tr:nth-child(even) {
-      background: #fafafa;
-    }
-
-    tbody tr:hover {
-      background: #ececff;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      background: #e0e0ff;
-      color: #262f87;
-    }
-
-    .tag-low {
-      background: #e3f2fd;
-      color: #1e88e5;
-    }
-    .tag-medium {
-      background: #fff3e0;
-      color: #fb8c00;
-    }
-    .tag-high {
-      background: #ffebee;
-      color: #c62828;
-    }
-
-    /* ======================================================
-       صفحه گزارش (کاور همه لینک‌های فهرست)
+       صفحه گزارش (کاور برای هر کارت)
        ====================================================== */
 
     .report-page {
@@ -436,17 +235,16 @@
     .report-header {
       display: flex;
       align-items: center;
+      justify-content: space-between; /* عنوان راست، بازگشت چپ */
       padding: 12px 24px;
       background: #e2e8f0;
       border-radius: 24px 24px 0 0;
     }
 
-    /* عنوان سمت چپ، دکمه بازگشت سمت راست */
     .report-header-title {
       font-size: 20px;
       font-weight: 700;
       color: #1f2b3c;
-      margin-inline-start: auto; /* عنوان را به سمت چپ می‌برد */
     }
 
     .report-body {
@@ -544,8 +342,7 @@
       }
 
       .toc-header {
-        flex-direction: row-reverse;
-        justify-content: flex-start;
+        gap: 8px;
       }
 
       .toc-title {
@@ -569,50 +366,6 @@
         font-size: 13px;
       }
 
-      .page {
-        margin: 16px;
-        padding: 20px 16px 28px;
-      }
-
-      .header {
-        flex-direction: row-reverse;
-      }
-
-      .header img {
-        height: 56px;
-        margin-top: 12px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
-
-      .subtitle {
-        font-size: 16px;
-      }
-
-      .meta {
-        font-size: 13px;
-      }
-
-      .cards-row,
-      .charts-row {
-        grid-template-columns: 1fr;
-      }
-
-      table {
-        font-size: 12px;
-      }
-
-      th, td {
-        padding: 8px 6px;
-      }
-
-      .back-button {
-        font-size: 14px;
-        padding: 4px 10px;
-      }
-
       .report-card {
         padding: 32px 20px 28px;
       }
@@ -628,6 +381,11 @@
 
       .report-subtitle {
         font-size: 16px;
+      }
+
+      .back-button {
+        font-size: 14px;
+        padding: 4px 10px;
       }
     }
   </style>
@@ -667,46 +425,46 @@
      صفحه فهرست مطالب
 ====================================================== -->
 <div id="tocPage" class="toc-page">
-
-  <!-- دکمه بازگشت گوشه چپ بالا (به صفحه مقدمه) -->
-  <div class="back-button back-global" id="tocBack">
-    <span>بازگشت</span>
-    <span class="back-arrow"></span>
-  </div>
-
   <div class="toc-container">
 
     <div class="toc-header">
+      <!-- عنوان سمت راست -->
       <div class="toc-title">فهرست مطالب</div>
+
+      <!-- دکمه بازگشت سمت چپ (به مقدمه) -->
+      <div class="back-button" id="tocBack">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
     </div>
 
     <div class="toc-grid">
-      <div class="toc-card">
+      <div class="toc-card" data-target="report1">
         <div class="toc-card-title">گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود</div>
         <div class="toc-card-subtitle">شناسنامه پروژه‌های تکمیل زیرساختی و مسکونی</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="report2">
         <div class="toc-card-title">داشبورد مدیریتی درآمدهای مسکونی</div>
         <div class="toc-card-subtitle">تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="report3">
         <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
         <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="report4">
         <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
         <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="report5">
         <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
         <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="report6">
         <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
         <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
       </div>
@@ -720,65 +478,245 @@
 </div>
 
 <!-- ======================================================
-     صفحه داشبورد اصلی (فعلاً لینک مستقیم ندارد)
+     گزارش ۱
 ====================================================== -->
-<div class="page" id="mainPage">
-
-  <div class="back-button back-global" id="dashboardBack">
-    <span>بازگشت</span>
-    <span class="back-arrow"></span>
-  </div>
-
-  <div class="header">
-    <img src="logo-left.jpg" alt="مشاور">
-    <img src="logo-right.jpg" alt="کارفرما">
-  </div>
-
-  <div class="divider"></div>
-
-  <h1>شناسانامه شهرداری ساری</h1>
-  <p class="subtitle">گزارش مدیریتی</p>
-  <p class="meta">پاییز ۱۴۰۴</p>
-
-  <!-- این بخش همان قبلی است؛ اگر نمی‌خواهی، می‌توانی بعداً حذفش کنی -->
-  <!-- ... کارت‌ها، نمودارها و جدول پروژه‌ها مثل نسخه قبل ... -->
-</div>
-
-<!-- ======================================================
-     صفحه گزارش (کاور همه لینک‌های فهرست)
-====================================================== -->
-<div id="reportPage" class="report-page">
+<div id="report1" class="report-page">
   <div class="report-container">
 
     <div class="report-header">
-      <!-- دکمه بازگشت سمت راست -->
-      <div class="back-button" id="reportBack">
+      <!-- عنوان سمت راست -->
+      <div class="report-header-title">
+        گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود
+      </div>
+      <!-- دکمه بازگشت سمت چپ (به فهرست) -->
+      <div class="back-button report-back">
         <span>بازگشت</span>
         <span class="back-arrow"></span>
-      </div>
-      <!-- عنوان سمت چپ -->
-      <div class="report-header-title" id="reportHeaderTitle">
-        گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود
       </div>
     </div>
 
     <div class="report-body">
       <div class="report-card">
         <div class="report-logos-row">
-          <img src="logo-left.jpg" alt="لوگوی چپ">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
           <img src="logo-main.png" alt="لوگوی وسط">
           <img src="logo-right.jpg" alt="لوگوی راست">
         </div>
 
         <div class="report-divider"></div>
 
-        <h2 class="report-main-title" id="reportMainTitle">
+        <h2 class="report-main-title">
           گزارش مدیریتی و تحلیلی شهرک نمک‌آبرود
         </h2>
-        <p class="report-subtitle" id="reportSubtitle">
+        <p class="report-subtitle">
           شناسنامه پروژه‌های تکمیل زیرساختی و مسکونی
         </p>
-        <p class="report-meta" id="reportMeta">
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     گزارش ۲
+====================================================== -->
+<div id="report2" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="report-header-title">
+        داشبورد مدیریتی درآمدهای مسکونی
+      </div>
+      <div class="back-button report-back">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          داشبورد مدیریتی درآمدهای مسکونی
+        </h2>
+        <p class="report-subtitle">
+          تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی
+        </p>
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     گزارش ۳
+====================================================== -->
+<div id="report3" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="report-header-title">
+        داشبورد مدیریتی برآورد هزینه
+      </div>
+      <div class="back-button report-back">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          داشبورد مدیریتی برآورد هزینه
+        </h2>
+        <p class="report-subtitle">
+          برآورد هزینه‌های زیرساختی
+        </p>
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     گزارش ۴
+====================================================== -->
+<div id="report4" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="report-header-title">
+        داشبورد راهبری اولویت‌بندی پروژه‌ها
+      </div>
+      <div class="back-button report-back">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          داشبورد راهبری اولویت‌بندی پروژه‌ها
+        </h2>
+        <p class="report-subtitle">
+          اولویت‌بندی پروژه‌های زیرساختی
+        </p>
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     گزارش ۵
+====================================================== -->
+<div id="report5" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="report-header-title">
+        داشبورد تحلیلی پروژه‌های سرمایه‌گذاری
+      </div>
+      <div class="back-button report-back">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          داشبورد تحلیلی پروژه‌های سرمایه‌گذاری
+        </h2>
+        <p class="report-subtitle">
+          تحلیل پروژه‌های بالقوه
+        </p>
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     گزارش ۶
+====================================================== -->
+<div id="report6" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="report-header-title">
+        بسته‌های پیشنهادی پروژه‌های بالقوه
+      </div>
+      <div class="back-button report-back">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg"  alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          بسته‌های پیشنهادی پروژه‌های بالقوه
+        </h2>
+        <p class="report-subtitle">
+          معرفی بسته‌های سرمایه‌گذاری
+        </p>
+        <p class="report-meta">
           بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
         </p>
       </div>
@@ -791,32 +729,30 @@
      اسکریپت‌ها
 ====================================================== -->
 <script>
-  const introPage   = document.getElementById("introPage");
-  const tocPage     = document.getElementById("tocPage");
-  const mainPage    = document.getElementById("mainPage");
-  const reportPage  = document.getElementById("reportPage");
+  const introPage  = document.getElementById("introPage");
+  const tocPage    = document.getElementById("tocPage");
+  const reportIds  = ["report1","report2","report3","report4","report5","report6"];
 
-  const introTitle  = document.getElementById("introTitle");
-  const tocBack     = document.getElementById("tocBack");
-  const dashboardBack = document.getElementById("dashboardBack");
-  const reportBack  = document.getElementById("reportBack");
+  const introTitle = document.getElementById("introTitle");
+  const tocBack    = document.getElementById("tocBack");
 
-  const reportHeaderTitle = document.getElementById("reportHeaderTitle");
-  const reportMainTitle   = document.getElementById("reportMainTitle");
-  const reportSubtitle    = document.getElementById("reportSubtitle");
-  const reportMeta        = document.getElementById("reportMeta");
+  function hideAllPages() {
+    introPage.style.display = "none";
+    tocPage.style.display   = "none";
+    reportIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+  }
 
-  function showPage(targetId) {
-    introPage.style.display  = "none";
-    tocPage.style.display    = "none";
-    mainPage.style.display   = "none";
-    reportPage.style.display = "none";
-
-    if (targetId === "introPage") {
-      introPage.style.display = "flex";
+  function showPage(id) {
+    hideAllPages();
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (id === "introPage") {
+      el.style.display = "flex";  // برای وسط‌چین شدن کارت
     } else {
-      const el = document.getElementById(targetId);
-      if (el) el.style.display = "block";
+      el.style.display = "block";
     }
     window.scrollTo(0, 0);
   }
@@ -827,35 +763,18 @@
   // بازگشت از فهرست به اینترو
   tocBack.addEventListener("click", () => showPage("introPage"));
 
-  // بازگشت از داشبورد به فهرست
-  if (dashboardBack) {
-    dashboardBack.addEventListener("click", () => showPage("tocPage"));
-  }
-
-  // بازگشت از صفحه گزارش به فهرست
-  reportBack.addEventListener("click", () => showPage("tocPage"));
-
-  // کلیک روی هر کارت فهرست → رفتن به صفحه گزارش با عناوین همان کارت
+  // کلیک روی هر کارت → رفتن به صفحه گزارش مربوطه
   document.querySelectorAll(".toc-card").forEach(card => {
     card.addEventListener("click", function () {
-      const title    = this.querySelector(".toc-card-title").innerText.trim();
-      const subtitle = this.querySelector(".toc-card-subtitle").innerText.trim();
-
-      reportHeaderTitle.textContent = title;    // عنوان بالا
-      reportMainTitle.textContent   = title;    // عنوان بزرگ وسط
-      reportSubtitle.textContent    = subtitle; // زیرعنوان
-
-      // متن ردیف پایین را ثابت گذاشتم؛ اگر برای هر کارت فرق دارد،
-      // می‌توانی اینجا بر اساس title تغییرش بدهی.
-      reportMeta.textContent = "بر اساس طرح بهنگام – شهریورماه ۱۴۰۴";
-
-      showPage("reportPage");
+      const targetId = this.getAttribute("data-target");
+      if (targetId) showPage(targetId);
     });
   });
 
-  /* اگر صفحه داشبورد و نمودارها را لازم داری، کد Chart.js و جستجو
-     مثل نسخه قبلی‌ات اینجا می‌تواند قرار بگیرد. در غیر این صورت
-     می‌توانی آن بخش را به‌طور کامل حذف کنی. */
+  // دکمه بازگشت همه گزارش‌ها → برگشت به فهرست
+  document.querySelectorAll(".report-back").forEach(btn => {
+    btn.addEventListener("click", () => showPage("tocPage"));
+  });
 </script>
 
 </body>
