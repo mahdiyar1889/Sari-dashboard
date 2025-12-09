@@ -23,25 +23,34 @@
       color: #222;
     }
 
-    /* ---------- صفحه‌ی مقدمه (اینترواِسپلش) ---------- */
+    /* ======================================================
+       صفحه مقدمه (Intro)
+       ====================================================== */
 
     .intro-page {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f5f8ff;
-      padding: 32px 16px;
+      background: #eef3ff;
+      padding: 40px 16px;
     }
 
     .intro-card {
-      max-width: 540px;
+      max-width: 750px;
       width: 100%;
       text-align: center;
       background: #ffffff;
-      padding: 40px 32px 32px;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      padding: 70px 70px 60px;
+      border-radius: 32px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .intro-top-label {
+      font-size: 20px;
+      font-weight: 400;
+      color: #1f2348;
+      margin-bottom: 8px;
     }
 
     .intro-logo-main {
@@ -51,31 +60,32 @@
     }
 
     .intro-title {
-      font-size: 32px;
-      line-height: 1.6;
-      margin: 0;
-      color: #000;
-      transition: color 0.2s ease;
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.5;
+      margin: 8px 0 0;
+      color: #1f3b97;
       cursor: pointer;
+      transition: color 0.25s ease;
     }
 
     .intro-title:hover {
-      color: #007bff; /* آبی شدن عنوان روی hover */
+      color: #0057ff;
     }
 
     .intro-caption {
-      margin-top: 16px;
-      font-size: 14px;
-      color: #666;
+      margin-top: 24px;
+      font-size: 16px;
+      color: #6f748d;
     }
 
     .intro-footer-logos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 24px;
-      margin-top: 32px;
-      margin-bottom: 8px;
+      gap: 40px;
+      margin-top: 36px;
+      margin-bottom: 4px;
     }
 
     .intro-footer-logos img {
@@ -84,12 +94,14 @@
     }
 
     .intro-meta {
-      font-size: 13px;
-      color: #777;
-      margin-top: 8px;
+      font-size: 14px;
+      color: #7a7f99;
+      margin-top: 16px;
     }
 
-    /* ---------- صفحه اصلی داشبورد ---------- */
+    /* ======================================================
+       صفحه اصلی داشبورد
+       ====================================================== */
 
     .page {
       max-width: 1200px;
@@ -293,27 +305,32 @@
       }
 
       .intro-card {
-        padding: 32px 20px 24px;
+        padding: 40px 20px 28px;
       }
 
       .intro-title {
-        font-size: 26px;
+        font-size: 30px;
       }
     }
   </style>
 </head>
+
+
 <body>
 
-<!-- ===== صفحه مقدمه ===== -->
+<!-- ======================================================
+     صفحه مقدمه (Intro)
+     ====================================================== -->
 <div id="introPage" class="intro-page">
   <div class="intro-card">
-    <!-- لوگوی اصلی بالای صفحه‌ی مقدمه -->
-    <img src="logo-main.png" alt="شهرداری ساری" class="intro-logo-main">
 
-    <!-- عنوان قابل کلیک -->
+    <div class="intro-top-label">نمک آبرود</div>
+
+    <img src="logo-main.png" alt="لوگو" class="intro-logo-main">
+
     <h1 id="introTitle" class="intro-title">
-       <br>
-      شهرداری ساری   
+      اطلس سرمایه‌گذاری<br>
+      شهرک توریستی نمک آبرود
     </h1>
 
     <p class="intro-caption">
@@ -326,30 +343,28 @@
     </div>
 
     <p class="intro-meta">
-      تهیه شده توسط مهندسین مشاور پارس پرنون – آذرماه ۱۴۰۴
+      تهیه شده توسط مهندسین مشاور ایده‌پرداز محیط – شهریورماه ۱۴۰۴
     </p>
+
   </div>
 </div>
 
-<!-- ===== صفحه اصلی داشبورد (ابتدا مخفی است) ===== -->
+
+<!-- ======================================================
+     صفحه داشبورد (مخفی در شروع)
+     ====================================================== -->
 <div class="page" id="mainPage" style="display:none;">
 
-  <!-- هدر با لوگوها -->
   <div class="header">
-    <!-- لوگوی چپ (مشاور) -->
-    <img src="logo-left.jpg" alt="لوگوی مشاور">
-    <!-- لوگوی راست (سازمان/شرکت) -->
-    <img src="logo-right.jpg" alt="لوگوی کارفرما">
+    <img src="logo-left.jpg" alt="مشاور">
+    <img src="logo-right.jpg" alt="کارفرما">
   </div>
 
   <div class="divider"></div>
 
-  <!-- عنوان اصلی -->
   <h1>شناسانامه شهرداری ساری</h1>
   <p class="subtitle">گزارش مدیریتی</p>
-  <p class="meta">
-    پاییز ۱۴۰۴
-  </p>
+  <p class="meta">پاییز ۱۴۰۴</p>
 
   <!-- کارت‌های خلاصه -->
   <div class="cards-row">
@@ -358,11 +373,13 @@
       <div class="card-value" id="total-projects">1</div>
       <div class="card-extra">در چهار حوزه کاربری مختلف</div>
     </div>
+
     <div class="card">
       <div class="card-title">جمع برآورد سرمایه‌گذاری</div>
       <div class="card-value" id="total-budget">۲٬۴۵۰ میلیارد تومان</div>
       <div class="card-extra">شامل پروژه‌های اولویت‌دار و پشتیبان</div>
     </div>
+
     <div class="card">
       <div class="card-title">پروژه‌های اولویت‌دار</div>
       <div class="card-value" id="priority-projects">۵</div>
@@ -403,117 +420,26 @@
             <th>ردیف</th>
             <th>عنوان پروژه</th>
             <th>کاربری / حوزه</th>
-            <th>برآورد سرمایه‌گذاری (میلیارد تومان)</th>
+            <th>سرمایه‌گذاری (میلیارد تومان)</th>
             <th>وضعیت</th>
             <th>اولویت</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>۱</td>
-            <td>تکمیل زیرساخت‌های گردشگری محور ساحل</td>
-            <td>گردشگری</td>
-            <td>۴۵۰</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۲</td>
-            <td>ایجاد مجموعه اقامتی و پذیرایی ساحلی</td>
-            <td>گردشگری</td>
-            <td>۳۲۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۳</td>
-            <td>احداث پارک شهری و فضای سبز مرکزی</td>
-            <td>فضای سبز و محیط زیست</td>
-            <td>۱۸۰</td>
-            <td>در حال اجرا</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۴</td>
-            <td>بهسازی شبکه معابر و دسترسی‌ها</td>
-            <td>زیرساخت شهری</td>
-            <td>۳۹۰</td>
-            <td>در حال اجرا</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۵</td>
-            <td>ایجاد مرکز خدمات رفاهی و فرهنگی</td>
-            <td>خدمات و فرهنگی</td>
-            <td>۲۶۰</td>
-            <td>در دست تصویب</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۶</td>
-            <td>ساماندهی پارکینگ‌ها و حمل‌ونقل درون‌شهری</td>
-            <td>حمل‌ونقل</td>
-            <td>۱۵۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۷</td>
-            <td>توسعه روشنایی و مبلمان شهری</td>
-            <td>زیرساخت شهری</td>
-            <td>۹۵</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۸</td>
-            <td>ایجاد مجموعه ورزشی و تفریحی</td>
-            <td>خدمات و فرهنگی</td>
-            <td>۲۸۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۹</td>
-            <td>توسعه و نوسازی تأسیسات زیربنایی</td>
-            <td>زیرساخت شهری</td>
-            <td>۳۲۰</td>
-            <td>در دست تصویب</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۱۰</td>
-            <td>سامان‌دهی ورودی‌های شهرک</td>
-            <td>زیرساخت شهری</td>
-            <td>۱۳۵</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۱۱</td>
-            <td>ایجاد مرکز نوآوری و خدمات استارتاپی</td>
-            <td>اقتصادی / خدماتی</td>
-            <td>۲۲۰</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۱۲</td>
-            <td>توسعه مسیرهای پیاده و دوچرخه</td>
-            <td>حمل‌ونقل</td>
-            <td>۱۵۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
+          <!-- داده نمونه -->
+          <tr><td>۱</td><td>تکمیل گردشگری</td><td>گردشگری</td><td>۴۵۰</td><td>مطالعه</td><td><span class="tag tag-high">بالا</span></td></tr>
+          <tr><td>۲</td><td>مجموعه اقامتی</td><td>گردشگری</td><td>۳۲۰</td><td>پیشنهادی</td><td><span class="tag tag-medium">متوسط</span></td></tr>
         </tbody>
       </table>
     </div>
-  </div>
 
 </div>
 
+
+<!-- ======================================================
+     اسکریپت‌ها
+     ====================================================== -->
 <script>
-  // تغییر صفحه از مقدمه به داشبورد
   const introTitle = document.getElementById("introTitle");
   const introPage = document.getElementById("introPage");
   const mainPage  = document.getElementById("mainPage");
@@ -524,86 +450,30 @@
     window.scrollTo(0, 0);
   });
 
-  // داده‌های نمونه برای نمودارها
-  const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
-  const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
+  // نمودار نمونه
+  const categories = ["گردشگری", "فضای سبز", "زیرساخت", "خدمات", "حمل‌ونقل"];
+  const budgets    = [770, 180, 940, 540, 300];
 
-  const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
+  new Chart(document.getElementById("budgetByCategoryChart"), {
+    type: "bar",
+    data: { labels: categories, datasets: [{ data: budgets }] },
+    options: { responsive: true }
+  });
+
+  const statusLabels = ["پیشنهادی", "مطالعه", "تصویب", "اجرا"];
   const statusCounts = [5, 3, 2, 2];
 
-  // نمودار ستونی سرمایه‌گذاری به تفکیک حوزه
-  const budgetCtx = document.getElementById("budgetByCategoryChart").getContext("2d");
-  new Chart(budgetCtx, {
-    type: "bar",
-    data: {
-      labels: categories,
-      datasets: [{
-        label: "سرمایه‌گذاری (میلیارد تومان)",
-        data: budgets
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              return " " + context.parsed.y.toLocaleString("fa-IR") + " میلیارد تومان";
-            }
-          }
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function(value) {
-              return value.toLocaleString("fa-IR");
-            }
-          }
-        }
-      }
-    }
-  });
-
-  // نمودار دایره‌ای وضعیت پروژه‌ها
-  const statusCtx = document.getElementById("statusChart").getContext("2d");
-  new Chart(statusCtx, {
+  new Chart(document.getElementById("statusChart"), {
     type: "doughnut",
-    data: {
-      labels: statusLabels,
-      datasets: [{
-        data: statusCounts
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: "bottom"
-        },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              return " " + context.label + ": " + context.parsed.toLocaleString("fa-IR") + " پروژه";
-            }
-          }
-        }
-      }
-    }
+    data: { labels: statusLabels, datasets: [{ data: statusCounts }] },
+    options: { responsive: true }
   });
 
-  // جستجو در جدول پروژه‌ها
   const searchInput = document.getElementById("projectSearch");
   searchInput.addEventListener("input", function () {
     const term = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#projectsTable tbody tr");
-    rows.forEach(row => {
-      const text = row.innerText.toLowerCase();
-      row.style.display = text.includes(term) ? "" : "none";
+    document.querySelectorAll("#projectsTable tbody tr").forEach(row => {
+      row.style.display = row.innerText.toLowerCase().includes(term) ? "" : "none";
     });
   });
 </script>
