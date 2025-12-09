@@ -702,8 +702,8 @@
   const tocPage   = document.getElementById("tocPage");
   const mainPage  = document.getElementById("mainPage");
 
-  const introTitle = document.getElementById("introTitle");
-  const tocBack    = document.getElementById("tocBack");
+  const introTitle    = document.getElementById("introTitle");
+  const tocBack       = document.getElementById("tocBack");
   const dashboardBack = document.getElementById("dashboardBack");
 
   // از اینترو به فهرست مطالب
@@ -716,7 +716,7 @@
 
   // بازگشت از فهرست مطالب به صفحه ورود
   tocBack.addEventListener("click", function () {
-    introPage.style.display = "block";
+    introPage.style.display = "flex";   // ✅ اینجا flex شد تا دوباره وسط قرار بگیرد
     tocPage.style.display   = "none";
     mainPage.style.display  = "none";
     window.scrollTo(0, 0);
@@ -741,9 +741,8 @@
   });
 
   // داده‌های نمونه برای نمودارها
-  const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
-  const budgets = [770, 180, 940, 540, 300, 220];
-
+  const categories   = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
+  const budgets      = [770, 180, 940, 540, 300, 220];
   const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
   const statusCounts = [5, 3, 2, 2];
 
