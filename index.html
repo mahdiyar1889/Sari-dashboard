@@ -36,12 +36,13 @@
        ====================================================== */
     .back-button {
       display: inline-flex;
+      flex-direction: row-reverse;   /* فلش سمت راست، متن سمت چپ */
       align-items: center;
       gap: 6px;
       font-size: 16px;
       color: #4b5b73;
       cursor: pointer;
-      padding: 6px 12px;
+      padding: 4px 10px;
       border-radius: 999px;
       transition: background 0.2s ease, color 0.2s ease;
       white-space: nowrap;
@@ -53,8 +54,12 @@
     }
 
     .back-arrow {
-      font-size: 18px;
-      line-height: 1;
+      width: 14px;
+      height: 14px;
+      border-right: 2px solid #4b5b73;
+      border-bottom: 2px solid #4b5b73;
+      transform: rotate(-45deg);  /* شکل > */
+      margin-top: 1px;
     }
 
     /* ======================================================
@@ -525,7 +530,7 @@
 
 <!-- ======================================================
      صفحه مقدمه
-     ====================================================== -->
+====================================================== -->
 <div id="introPage" class="intro-page">
   <div class="intro-card">
     <div class="intro-top-label">نمک آبرود</div>
@@ -553,7 +558,7 @@
 
 <!-- ======================================================
      صفحه فهرست مطالب
-     ====================================================== -->
+====================================================== -->
 <div id="tocPage" class="toc-page">
   <div class="toc-container">
 
@@ -562,7 +567,7 @@
       <!-- دکمه بازگشت بالا-چپ -->
       <div class="back-button" id="tocBack">
         <span>بازگشت</span>
-        <span class="back-arrow">➔</span>
+        <span class="back-arrow"></span>
       </div>
     </div>
 
@@ -607,14 +612,14 @@
 
 <!-- ======================================================
      صفحه داشبورد اصلی
-     ====================================================== -->
+====================================================== -->
 <div class="page" id="mainPage">
 
   <!-- ردیف بالایی برای دکمه بازگشت -->
   <div class="dash-top">
     <div class="back-button" id="dashboardBack">
       <span>بازگشت</span>
-      <span class="back-arrow">➔</span>
+      <span class="back-arrow"></span>
     </div>
   </div>
 
@@ -791,7 +796,7 @@
 
 <!-- ======================================================
      اسکریپت‌ها
-     ====================================================== -->
+====================================================== -->
 <script>
   const introPage = document.getElementById("introPage");
   const tocPage   = document.getElementById("tocPage");
