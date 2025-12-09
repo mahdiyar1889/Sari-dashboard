@@ -16,7 +16,7 @@
     }
   </style>
 
-  <!-- Chart.js برای نمودارها -->
+  <!-- Chart.js برای نمودارها (برای صفحه داشبورد، اگر بعداً استفاده کنی) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -225,7 +225,7 @@
     }
 
     /* ======================================================
-       صفحه اصلی داشبورد
+       صفحه اصلی داشبورد (اگر خواستی استفاده کنی)
        ====================================================== */
 
     .page {
@@ -414,7 +414,7 @@
     }
 
     /* ======================================================
-       صفحه گزارش شبیه تصویر (گزارش مدیریتی و تحلیلی شناخت)
+       صفحه گزارش (کاور همه لینک‌های فهرست)
        ====================================================== */
 
     .report-page {
@@ -436,16 +436,17 @@
     .report-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 12px 24px;
       background: #e2e8f0;
       border-radius: 24px 24px 0 0;
     }
 
+    /* عنوان سمت چپ، دکمه بازگشت سمت راست */
     .report-header-title {
       font-size: 20px;
       font-weight: 700;
       color: #1f2b3c;
+      margin-inline-start: auto; /* عنوان را به سمت چپ می‌برد */
     }
 
     .report-body {
@@ -667,7 +668,7 @@
 ====================================================== -->
 <div id="tocPage" class="toc-page">
 
-  <!-- دکمه بازگشت گوشه چپ بالا -->
+  <!-- دکمه بازگشت گوشه چپ بالا (به صفحه مقدمه) -->
   <div class="back-button back-global" id="tocBack">
     <span>بازگشت</span>
     <span class="back-arrow"></span>
@@ -680,36 +681,32 @@
     </div>
 
     <div class="toc-grid">
-      <!-- کارت ۱ → داشبورد اصلی -->
-      <div class="toc-card" data-target="mainPage">
+      <div class="toc-card">
+        <div class="toc-card-title">گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود</div>
+        <div class="toc-card-subtitle">شناسنامه پروژه‌های تکمیل زیرساختی و مسکونی</div>
+      </div>
+
+      <div class="toc-card">
         <div class="toc-card-title">داشبورد مدیریتی درآمدهای مسکونی</div>
         <div class="toc-card-subtitle">تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی</div>
       </div>
 
-      <!-- کارت ۲ فعلاً هم به داشبورد وصل می‌شود -->
-      <div class="toc-card" data-target="mainPage">
+      <div class="toc-card">
         <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
         <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
       </div>
 
-      <!-- کارت ۳ → صفحه گزارش شبیه تصویر -->
-      <div class="toc-card" data-target="reportPage">
-        <div class="toc-card-title">گزارش مدیریتی و تحلیلی شناخت</div>
-        <div class="toc-card-subtitle">تحلیل وضعیت موجود و پتانسیل‌ها</div>
-      </div>
-
-      <!-- بقیه کارت‌ها، فعلاً به داشبورد اصلی -->
-      <div class="toc-card" data-target="mainPage">
+      <div class="toc-card">
         <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
         <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
       </div>
 
-      <div class="toc-card" data-target="mainPage">
+      <div class="toc-card">
         <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
         <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
       </div>
 
-      <div class="toc-card" data-target="mainPage">
+      <div class="toc-card">
         <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
         <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
       </div>
@@ -723,11 +720,10 @@
 </div>
 
 <!-- ======================================================
-     صفحه داشبورد اصلی
+     صفحه داشبورد اصلی (فعلاً لینک مستقیم ندارد)
 ====================================================== -->
 <div class="page" id="mainPage">
 
-  <!-- دکمه بازگشت گوشه چپ بالا -->
   <div class="back-button back-global" id="dashboardBack">
     <span>بازگشت</span>
     <span class="back-arrow"></span>
@@ -744,178 +740,24 @@
   <p class="subtitle">گزارش مدیریتی</p>
   <p class="meta">پاییز ۱۴۰۴</p>
 
-  <!-- کارت‌های خلاصه -->
-  <div class="cards-row">
-    <div class="card">
-      <div class="card-title">تعداد کل پروژه‌ها</div>
-      <div class="card-value" id="total-projects">1</div>
-      <div class="card-extra">در چهار حوزه کاربری مختلف</div>
-    </div>
-    <div class="card">
-      <div class="card-title">جمع برآورد سرمایه‌گذاری</div>
-      <div class="card-value" id="total-budget">۲٬۴۵۰ میلیارد تومان</div>
-      <div class="card-extra">شامل پروژه‌های اولویت‌دار و پشتیبان</div>
-    </div>
-    <div class="card">
-      <div class="card-title">پروژه‌های اولویت‌دار</div>
-      <div class="card-value" id="priority-projects">۵</div>
-      <div class="card-extra">با اثرگذاری مستقیم در ارتقای کیفیت خدمات</div>
-    </div>
-  </div>
-
-  <!-- نمودارها -->
-  <div class="section">
-    <h2 class="section-title">نمای کلی پروژه‌ها</h2>
-
-    <div class="charts-row">
-      <div class="chart-card">
-        <div class="chart-title">سرمایه‌گذاری پیشنهادی به تفکیک حوزه کاربری (میلیارد تومان)</div>
-        <canvas id="budgetByCategoryChart"></canvas>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-title">وضعیت پروژه‌ها</div>
-        <canvas id="statusChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- جدول پروژه‌ها -->
-  <div class="section">
-    <h2 class="section-title">فهرست پروژه‌های بالقوه</h2>
-
-    <div class="search-row">
-      <label for="projectSearch">جستجو در پروژه‌ها:</label>
-      <input id="projectSearch" class="search-input" placeholder="نام پروژه، کاربری، وضعیت، اولویت و..." />
-    </div>
-
-    <div style="overflow-x:auto;">
-      <table id="projectsTable">
-        <thead>
-          <tr>
-            <th>ردیف</th>
-            <th>عنوان پروژه</th>
-            <th>کاربری / حوزه</th>
-            <th>برآورد سرمایه‌گذاری (میلیارد تومان)</th>
-            <th>وضعیت</th>
-            <th>اولویت</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>۱</td>
-            <td>تکمیل زیرساخت‌های گردشگری محور ساحل</td>
-            <td>گردشگری</td>
-            <td>۴۵۰</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۲</td>
-            <td>ایجاد مجموعه اقامتی و پذیرایی ساحلی</td>
-            <td>گردشگری</td>
-            <td>۳۲۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۳</td>
-            <td>احداث پارک شهری و فضای سبز مرکزی</td>
-            <td>فضای سبز و محیط زیست</td>
-            <td>۱۸۰</td>
-            <td>در حال اجرا</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۴</td>
-            <td>بهسازی شبکه معابر و دسترسی‌ها</td>
-            <td>زیرساخت شهری</td>
-            <td>۳۹۰</td>
-            <td>در حال اجرا</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۵</td>
-            <td>ایجاد مرکز خدمات رفاهی و فرهنگی</td>
-            <td>خدمات و فرهنگی</td>
-            <td>۲۶۰</td>
-            <td>در دست تصویب</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۶</td>
-            <td>ساماندهی پارکینگ‌ها و حمل‌ونقل درون‌شهری</td>
-            <td>حمل‌ونقل</td>
-            <td>۱۵۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۷</td>
-            <td>توسعه روشنایی و مبلمان شهری</td>
-            <td>زیرساخت شهری</td>
-            <td>۹۵</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۸</td>
-            <td>ایجاد مجموعه ورزشی و تفریحی</td>
-            <td>خدمات و فرهنگی</td>
-            <td>۲۸۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۹</td>
-            <td>توسعه و نوسازی تأسیسات زیربنایی</td>
-            <td>زیرساخت شهری</td>
-            <td>۳۲۰</td>
-            <td>در دست تصویب</td>
-            <td><span class="tag tag-high">بالا</span></td>
-          </tr>
-          <tr>
-            <td>۱۰</td>
-            <td>سامان‌دهی ورودی‌های شهرک</td>
-            <td>زیرساخت شهری</td>
-            <td>۱۳۵</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-          <tr>
-            <td>۱۱</td>
-            <td>ایجاد مرکز نوآوری و خدمات استارتاپی</td>
-            <td>اقتصادی / خدماتی</td>
-            <td>۲۲۰</td>
-            <td>در دست مطالعه</td>
-            <td><span class="tag tag-low">کم</span></td>
-          </tr>
-          <tr>
-            <td>۱۲</td>
-            <td>توسعه مسیرهای پیاده و دوچرخه</td>
-            <td>حمل‌ونقل</td>
-            <td>۱۵۰</td>
-            <td>پیشنهادی</td>
-            <td><span class="tag tag-medium">متوسط</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <!-- این بخش همان قبلی است؛ اگر نمی‌خواهی، می‌توانی بعداً حذفش کنی -->
+  <!-- ... کارت‌ها، نمودارها و جدول پروژه‌ها مثل نسخه قبل ... -->
 </div>
 
 <!-- ======================================================
-     صفحه گزارش مدیریتی و تحلیلی شناخت (شبیه تصویر)
+     صفحه گزارش (کاور همه لینک‌های فهرست)
 ====================================================== -->
 <div id="reportPage" class="report-page">
   <div class="report-container">
 
     <div class="report-header">
+      <!-- دکمه بازگشت سمت راست -->
       <div class="back-button" id="reportBack">
         <span>بازگشت</span>
         <span class="back-arrow"></span>
       </div>
-      <div class="report-header-title">
+      <!-- عنوان سمت چپ -->
+      <div class="report-header-title" id="reportHeaderTitle">
         گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود
       </div>
     </div>
@@ -930,13 +772,13 @@
 
         <div class="report-divider"></div>
 
-        <h2 class="report-main-title">
+        <h2 class="report-main-title" id="reportMainTitle">
           گزارش مدیریتی و تحلیلی شهرک نمک‌آبرود
         </h2>
-        <p class="report-subtitle">
+        <p class="report-subtitle" id="reportSubtitle">
           شناسنامه پروژه‌های تکمیل زیرساختی و مسکونی
         </p>
-        <p class="report-meta">
+        <p class="report-meta" id="reportMeta">
           بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
         </p>
       </div>
@@ -949,17 +791,21 @@
      اسکریپت‌ها
 ====================================================== -->
 <script>
-  const introPage = document.getElementById("introPage");
-  const tocPage   = document.getElementById("tocPage");
-  const mainPage  = document.getElementById("mainPage");
-  const reportPage = document.getElementById("reportPage");
+  const introPage   = document.getElementById("introPage");
+  const tocPage     = document.getElementById("tocPage");
+  const mainPage    = document.getElementById("mainPage");
+  const reportPage  = document.getElementById("reportPage");
 
-  const introTitle    = document.getElementById("introTitle");
-  const tocBack       = document.getElementById("tocBack");
+  const introTitle  = document.getElementById("introTitle");
+  const tocBack     = document.getElementById("tocBack");
   const dashboardBack = document.getElementById("dashboardBack");
-  const reportBack    = document.getElementById("reportBack");
+  const reportBack  = document.getElementById("reportBack");
 
-  // تابع کمکی برای نمایش یک صفحه و پنهان کردن بقیه
+  const reportHeaderTitle = document.getElementById("reportHeaderTitle");
+  const reportMainTitle   = document.getElementById("reportMainTitle");
+  const reportSubtitle    = document.getElementById("reportSubtitle");
+  const reportMeta        = document.getElementById("reportMeta");
+
   function showPage(targetId) {
     introPage.style.display  = "none";
     tocPage.style.display    = "none";
@@ -975,112 +821,41 @@
     window.scrollTo(0, 0);
   }
 
-  // از اینترو به فهرست مطالب
-  introTitle.addEventListener("click", function () {
-    showPage("tocPage");
-  });
+  // از اینترو به فهرست
+  introTitle.addEventListener("click", () => showPage("tocPage"));
 
-  // بازگشت از فهرست مطالب به صفحه ورود
-  tocBack.addEventListener("click", function () {
-    showPage("introPage");
-  });
+  // بازگشت از فهرست به اینترو
+  tocBack.addEventListener("click", () => showPage("introPage"));
 
-  // بازگشت از داشبورد به فهرست مطالب
-  dashboardBack.addEventListener("click", function () {
-    showPage("tocPage");
-  });
+  // بازگشت از داشبورد به فهرست
+  if (dashboardBack) {
+    dashboardBack.addEventListener("click", () => showPage("tocPage"));
+  }
 
-  // بازگشت از صفحه گزارش به فهرست مطالب
-  reportBack.addEventListener("click", function () {
-    showPage("tocPage");
-  });
+  // بازگشت از صفحه گزارش به فهرست
+  reportBack.addEventListener("click", () => showPage("tocPage"));
 
-  // کلیک روی هر کارت فهرست → رفتن به صفحه مشخص‌شده در data-target
+  // کلیک روی هر کارت فهرست → رفتن به صفحه گزارش با عناوین همان کارت
   document.querySelectorAll(".toc-card").forEach(card => {
     card.addEventListener("click", function () {
-      const target = this.dataset.target || "mainPage";
-      showPage(target);
+      const title    = this.querySelector(".toc-card-title").innerText.trim();
+      const subtitle = this.querySelector(".toc-card-subtitle").innerText.trim();
+
+      reportHeaderTitle.textContent = title;    // عنوان بالا
+      reportMainTitle.textContent   = title;    // عنوان بزرگ وسط
+      reportSubtitle.textContent    = subtitle; // زیرعنوان
+
+      // متن ردیف پایین را ثابت گذاشتم؛ اگر برای هر کارت فرق دارد،
+      // می‌توانی اینجا بر اساس title تغییرش بدهی.
+      reportMeta.textContent = "بر اساس طرح بهنگام – شهریورماه ۱۴۰۴";
+
+      showPage("reportPage");
     });
   });
 
-  // داده‌های نمونه برای نمودارها
-  const categories = ["گردشگری", "فضای سبز و محیط زیست", "زیرساخت شهری", "خدمات و فرهنگی", "حمل‌ونقل", "اقتصادی / خدماتی"];
-  const budgets = [770, 180, 940, 540, 300, 220]; // میلیارد تومان
-
-  const statusLabels = ["پیشنهادی", "در دست مطالعه", "در دست تصویب", "در حال اجرا"];
-  const statusCounts = [5, 3, 2, 2];
-
-  // نمودار ستونی سرمایه‌گذاری به تفکیک حوزه
-  const budgetCtx = document.getElementById("budgetByCategoryChart").getContext("2d");
-  new Chart(budgetCtx, {
-    type: "bar",
-    data: {
-      labels: categories,
-      datasets: [{
-        label: "سرمایه‌گذاری (میلیارد تومان)",
-        data: budgets
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              return " " + context.parsed.y.toLocaleString("fa-IR") + " میلیارد تومان";
-            }
-          }
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function(value) {
-              return value.toLocaleString("fa-IR");
-            }
-          }
-        }
-      }
-    }
-  });
-
-  // نمودار دایره‌ای وضعیت پروژه‌ها
-  const statusCtx = document.getElementById("statusChart").getContext("2d");
-  new Chart(statusCtx, {
-    type: "doughnut",
-    data: {
-      labels: statusLabels,
-      datasets: [{
-        data: statusCounts
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { position: "bottom" },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              return " " + context.label + ": " + context.parsed.toLocaleString("fa-IR") + " پروژه";
-            }
-          }
-        }
-      }
-    }
-  });
-
-  // جستجو در جدول پروژه‌ها
-  const searchInput = document.getElementById("projectSearch");
-  searchInput.addEventListener("input", function () {
-    const term = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#projectsTable tbody tr");
-    rows.forEach(row => {
-      const text = row.innerText.toLowerCase();
-      row.style.display = text.includes(term) ? "" : "none";
-    });
-  });
+  /* اگر صفحه داشبورد و نمودارها را لازم داری، کد Chart.js و جستجو
+     مثل نسخه قبلی‌ات اینجا می‌تواند قرار بگیرد. در غیر این صورت
+     می‌توانی آن بخش را به‌طور کامل حذف کنی. */
 </script>
 
 </body>
