@@ -62,7 +62,7 @@
       margin-top: 1px;
     }
 
-    /* دکمه بازگشت که در گوشه چپ بالا ثابت باشد */
+    /* دکمه بازگشت که در گوشه چپ بالا ثابت باشد (برای فهرست و داشبورد) */
     .back-global {
       position: absolute;
       top: 8px;
@@ -248,6 +248,7 @@
     .header img {
       height: 80px;
       object-fit: contain;
+      margin-top: 20px;   /* لوگوها کمی پایین‌تر */
     }
 
     .divider {
@@ -413,6 +414,90 @@
     }
 
     /* ======================================================
+       صفحه گزارش شبیه تصویر (گزارش مدیریتی و تحلیلی شناخت)
+       ====================================================== */
+
+    .report-page {
+      min-height: 100vh;
+      background: #e7edf4;
+      padding: 24px;
+      display: none;
+    }
+
+    .report-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #f5f8fc;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      padding-bottom: 24px;
+    }
+
+    .report-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: #e2e8f0;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .report-header-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2b3c;
+    }
+
+    .report-body {
+      padding: 24px;
+    }
+
+    .report-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px 40px 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .report-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .report-logos-row img {
+      height: 90px;
+      object-fit: contain;
+    }
+
+    .report-divider {
+      height: 4px;
+      background: #3f3d9b;
+      margin-bottom: 32px;
+    }
+
+    .report-main-title {
+      font-size: 36px;
+      text-align: center;
+      color: #262f87;
+      margin: 0 0 16px;
+    }
+
+    .report-subtitle {
+      text-align: center;
+      font-size: 20px;
+      margin: 0 0 16px;
+    }
+
+    .report-meta {
+      text-align: center;
+      font-size: 16px;
+      color: #777;
+      margin: 0;
+    }
+
+    /* ======================================================
        نسخه موبایل
        ====================================================== */
     @media (max-width: 900px) {
@@ -494,6 +579,7 @@
 
       .header img {
         height: 56px;
+        margin-top: 12px;
       }
 
       h1 {
@@ -525,6 +611,23 @@
         font-size: 14px;
         padding: 4px 10px;
       }
+
+      .report-card {
+        padding: 32px 20px 28px;
+      }
+
+      .report-logos-row {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .report-main-title {
+        font-size: 28px;
+      }
+
+      .report-subtitle {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -536,7 +639,7 @@
 ====================================================== -->
 <div id="introPage" class="intro-page">
   <div class="intro-card">
-    <div class="intro-top-label">نمک آبرود</div>
+    <div class="intro-top-label">استان مازندران</div>
 
     <img src="logo-main.png" alt="لوگو" class="intro-logo-main">
 
@@ -577,32 +680,36 @@
     </div>
 
     <div class="toc-grid">
-      <div class="toc-card">
+      <!-- کارت ۱ → داشبورد اصلی -->
+      <div class="toc-card" data-target="mainPage">
         <div class="toc-card-title">داشبورد مدیریتی درآمدهای مسکونی</div>
         <div class="toc-card-subtitle">تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی</div>
       </div>
 
-      <div class="toc-card">
+      <!-- کارت ۲ فعلاً هم به داشبورد وصل می‌شود -->
+      <div class="toc-card" data-target="mainPage">
         <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
         <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
       </div>
 
-      <div class="toc-card">
+      <!-- کارت ۳ → صفحه گزارش شبیه تصویر -->
+      <div class="toc-card" data-target="reportPage">
         <div class="toc-card-title">گزارش مدیریتی و تحلیلی شناخت</div>
         <div class="toc-card-subtitle">تحلیل وضعیت موجود و پتانسیل‌ها</div>
       </div>
 
-      <div class="toc-card">
+      <!-- بقیه کارت‌ها، فعلاً به داشبورد اصلی -->
+      <div class="toc-card" data-target="mainPage">
         <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
         <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="mainPage">
         <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
         <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
       </div>
 
-      <div class="toc-card">
+      <div class="toc-card" data-target="mainPage">
         <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
         <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
       </div>
@@ -798,48 +905,101 @@
 </div>
 
 <!-- ======================================================
+     صفحه گزارش مدیریتی و تحلیلی شناخت (شبیه تصویر)
+====================================================== -->
+<div id="reportPage" class="report-page">
+  <div class="report-container">
+
+    <div class="report-header">
+      <div class="back-button" id="reportBack">
+        <span>بازگشت</span>
+        <span class="back-arrow"></span>
+      </div>
+      <div class="report-header-title">
+        گزارش مدیریتی و تحلیلی شناخت شهرک نمک‌آبرود
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="report-card">
+        <div class="report-logos-row">
+          <img src="logo-left.jpg" alt="لوگوی چپ">
+          <img src="logo-main.png" alt="لوگوی وسط">
+          <img src="logo-right.jpg" alt="لوگوی راست">
+        </div>
+
+        <div class="report-divider"></div>
+
+        <h2 class="report-main-title">
+          گزارش مدیریتی و تحلیلی شهرک نمک‌آبرود
+        </h2>
+        <p class="report-subtitle">
+          شناسنامه پروژه‌های تکمیل زیرساختی و مسکونی
+        </p>
+        <p class="report-meta">
+          بر اساس طرح بهنگام – شهریورماه ۱۴۰۴
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
      اسکریپت‌ها
 ====================================================== -->
 <script>
   const introPage = document.getElementById("introPage");
   const tocPage   = document.getElementById("tocPage");
   const mainPage  = document.getElementById("mainPage");
+  const reportPage = document.getElementById("reportPage");
 
   const introTitle    = document.getElementById("introTitle");
   const tocBack       = document.getElementById("tocBack");
   const dashboardBack = document.getElementById("dashboardBack");
+  const reportBack    = document.getElementById("reportBack");
+
+  // تابع کمکی برای نمایش یک صفحه و پنهان کردن بقیه
+  function showPage(targetId) {
+    introPage.style.display  = "none";
+    tocPage.style.display    = "none";
+    mainPage.style.display   = "none";
+    reportPage.style.display = "none";
+
+    if (targetId === "introPage") {
+      introPage.style.display = "flex";
+    } else {
+      const el = document.getElementById(targetId);
+      if (el) el.style.display = "block";
+    }
+    window.scrollTo(0, 0);
+  }
 
   // از اینترو به فهرست مطالب
   introTitle.addEventListener("click", function () {
-    introPage.style.display = "none";
-    tocPage.style.display   = "block";
-    mainPage.style.display  = "none";
-    window.scrollTo(0, 0);
+    showPage("tocPage");
   });
 
   // بازگشت از فهرست مطالب به صفحه ورود
   tocBack.addEventListener("click", function () {
-    introPage.style.display = "flex";   // مهم: flex تا وسط بماند
-    tocPage.style.display   = "none";
-    mainPage.style.display  = "none";
-    window.scrollTo(0, 0);
+    showPage("introPage");
   });
 
   // بازگشت از داشبورد به فهرست مطالب
   dashboardBack.addEventListener("click", function () {
-    introPage.style.display = "none";
-    tocPage.style.display   = "block";
-    mainPage.style.display  = "none";
-    window.scrollTo(0, 0);
+    showPage("tocPage");
   });
 
-  // کلیک روی هر کارت فهرست = رفتن به داشبورد
+  // بازگشت از صفحه گزارش به فهرست مطالب
+  reportBack.addEventListener("click", function () {
+    showPage("tocPage");
+  });
+
+  // کلیک روی هر کارت فهرست → رفتن به صفحه مشخص‌شده در data-target
   document.querySelectorAll(".toc-card").forEach(card => {
     card.addEventListener("click", function () {
-      introPage.style.display = "none";
-      tocPage.style.display   = "none";
-      mainPage.style.display  = "block";
-      window.scrollTo(0, 0);
+      const target = this.dataset.target || "mainPage";
+      showPage(target);
     });
   });
 
