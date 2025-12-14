@@ -1,18 +1,134 @@
 * { box-sizing: border-box; }
-body { margin:0; font-family:"B Nazanin", sans-serif; background:#f5f5f5; color:#222; }
 
-/* Login */
-.login-page{ min-height:100vh; display:flex; align-items:center; justify-content:center; background:#eef3ff; padding:24px 12px; }
-.login-card{ width:100%; max-width:420px; background:#fff; border-radius:24px; padding:28px 22px; box-shadow:0 18px 40px rgba(0,0,0,.08); }
-.login-title{ margin:0 0 14px; font-size:22px; font-weight:700; color:#1f2b3c; }
-.login-form{ display:flex; flex-direction:column; gap:10px; }
-.login-label{ font-size:14px; color:#44536b; }
-.login-input{ padding:10px 12px; border-radius:12px; border:1px solid #d6ddea; font-size:15px; outline:none; }
-.login-button{ margin-top:8px; border:none; border-radius:14px; padding:10px 12px; cursor:pointer; background:#0057ff; color:#fff; font-size:16px; }
-.login-error{ margin:6px 0 0; color:#c0392b; font-size:14px; min-height:18px; }
+body {
+  margin: 0;
+  font-family: "B Nazanin", sans-serif;
+  background: #e5e7eb;
+}
 
-/* Pages default hidden (JS نمایش می‌دهد) */
-.intro-page, .toc-page, .report-page{ display:none; }
+/* ================= LOGIN ================= */
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef2f7;
+}
 
-/* Logout */
-.logout-btn{ border:none; border-radius:999px; padding:6px 14px; cursor:pointer; background:#fff; color:#1f2b3c; }
+.login-card{
+  width:360px;
+  background:#fff;
+  padding:28px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.login-title{
+  margin:0 0 16px;
+  text-align:center;
+}
+
+.login-form{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.login-form input{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.login-form button{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+}
+
+#loginError{
+  color:#dc2626;
+  font-size:14px;
+  min-height:18px;
+}
+
+/* ================= INTRO ================= */
+.intro-page{
+  min-height:100vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#d1d5db;
+}
+
+.intro-frame{
+  width:1200px;
+  max-width:95%;
+  background:#f8fafc;
+  border-radius:14px;
+  padding:60px 40px;
+  text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.intro-top-logo{
+  height:80px;
+  margin-bottom:40px;
+}
+
+.intro-title{
+  font-size:64px;
+  font-weight:900;
+  margin:0;
+  cursor:pointer;
+}
+
+.intro-subtitle{
+  font-size:26px;
+  margin:10px 0;
+  color:#374151;
+}
+
+.intro-caption{
+  font-size:18px;
+  color:#6b7280;
+}
+
+.intro-bottom-logos{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin:60px 0 20px;
+}
+
+.intro-bottom-logos img{
+  height:70px;
+}
+
+.intro-meta{
+  font-size:18px;
+  color:#374151;
+  line-height:1.8;
+}
+
+.intro-logout{
+  margin-top:20px;
+  padding:10px 22px;
+  border:none;
+  border-radius:999px;
+  background:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+}
+
+/* موبایل */
+@media (max-width:900px){
+  .intro-title{ font-size:32px; }
+  .intro-subtitle{ font-size:18px; }
+  .intro-bottom-logos img{ height:50px; }
+}
