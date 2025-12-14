@@ -1,291 +1,70 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <title>خدمات مطالعات و طراحی کامل ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>داشبورد مدیریتی</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- فونت B Nazanin (فایل‌ها کنار index.html باشند) -->
+  <!-- فونت -->
   <style>
     @font-face {
       font-family: "B Nazanin";
       src: url("BNazanin.woff2") format("woff2"),
            url("BNazanin.woff") format("woff");
-      font-weight: normal;
-      font-style: normal;
     }
   </style>
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
-
 <body>
 
-<!-- ======================================================
-     صفحه ورود
-====================================================== -->
+<!-- ================= LOGIN ================= -->
 <div id="loginPage" class="login-page">
   <div class="login-card">
     <h1 class="login-title">ورود به داشبورد</h1>
 
     <form id="loginForm" class="login-form">
-      <label class="login-label">ایمیل</label>
-      <input id="email" class="login-input" type="email" placeholder="dashboard@parsparnoun.com" required />
+      <label>ایمیل</label>
+      <input id="email" type="email" required>
 
-      <label class="login-label">رمز عبور</label>
-      <input id="password" class="login-input" type="password" placeholder="123456" required />
+      <label>رمز عبور</label>
+      <input id="password" type="password" required>
 
-      <button class="login-button" type="submit">ورود</button>
-
-      <p id="loginError" class="login-error"></p>
+      <button type="submit">ورود</button>
+      <p id="loginError"></p>
     </form>
   </div>
 </div>
 
-<!-- ======================================================
-     صفحه مقدمه (زیباتر)
-     متن‌ها تغییر نکرده‌اند
-====================================================== -->
+<!-- ================= INTRO (بعد از ورود) ================= -->
 <div id="introPage" class="intro-page">
-  <div class="intro-card">
-    <div class="intro-top-label">استان مازندران</div>
+  <div class="intro-frame">
 
-    <!-- لوگو اصلی: چون در ریپوی شما logo-main.png نبود، از logo-right.jpg استفاده شد -->
-    <img src="logo-right.jpg" alt="لوگو" class="intro-logo-main">
+    <img src="logo-right.jpg" class="intro-top-logo" alt="لوگو">
 
     <h1 id="introTitle" class="intro-title">
-      خدمات مطالعات و طراحی کامل ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران
+      اطلس سرمایه گذاری
     </h1>
+
+    <h2 class="intro-subtitle">
+      شهرک توریستی نمک آبرود
+    </h2>
 
     <p class="intro-caption">
       برای مشاهده فهرست، روی عنوان بالا کلیک کنید
     </p>
 
-    <!-- لوگوهای پایین: چون logo-consultant/employer نبود، از left/right استفاده شد -->
-    <div class="intro-footer-logos">
-      <img src="logo-left.jpg" alt="مشاور">
-      <img src="logo-right.jpg" alt="کارفرما">
+    <div class="intro-bottom-logos">
+      <img src="logo-left.jpg" alt="">
+      <img src="logo-right.jpg" alt="">
     </div>
 
     <p class="intro-meta">
-      تهیه شده توسط مهندسین مشاور پارس پرنون<br>
-      آذرماه ۱۴۰۴
+      تهیه شده توسط مهندسین مشاور ایده پرداز محیط<br>
+      شهریورماه ۱۴۰۴
     </p>
 
-    <div class="top-actions">
-      <button id="logoutBtn1" class="logout-btn" type="button">خروج</button>
-    </div>
-  </div>
-</div>
-
-<!-- ======================================================
-     صفحه فهرست مطالب
-====================================================== -->
-<div id="tocPage" class="toc-page">
-  <div class="toc-container">
-
-    <div class="toc-header">
-      <div class="toc-title">فهرست مطالب</div>
-
-      <div class="toc-header-actions">
-        <div class="back-button" id="tocBack">
-          <span>بازگشت</span>
-          <span class="back-arrow"></span>
-        </div>
-
-        <button id="logoutBtn2" class="logout-btn" type="button">خروج</button>
-      </div>
-    </div>
-
-    <div class="toc-grid">
-      <div class="toc-card" data-target="report1">
-        <div class="toc-card-title">اطلاعات قراردادی</div>
-        <div class="toc-card-subtitle">(موضوع، مدت، مبلغ، و اسناد پیوست)</div>
-      </div>
-
-      <div class="toc-card" data-target="report2">
-        <div class="toc-card-title">نقشه‌ها</div>
-        <div class="toc-card-subtitle">(معماری، سازه، تاسیسات، و رندرها)</div>
-      </div>
-
-      <div class="toc-card" data-target="report3">
-        <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
-        <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
-      </div>
-
-      <div class="toc-card" data-target="report4">
-        <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
-        <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
-      </div>
-
-      <div class="toc-card" data-target="report5">
-        <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
-        <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
-      </div>
-
-      <div class="toc-card" data-target="report6">
-        <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
-        <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
-      </div>
-    </div>
-
-    <div class="toc-footer">
-      خدمات مطالعات و طراحی کامل ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران
-    </div>
-
-  </div>
-</div>
-
-<!-- ======================================================
-     گزارش‌ها (همان قبلی)
-====================================================== -->
-<div id="report1" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">اطلاعات قراردادی</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">اطلاعات قراردادی</h2>
-        <p class="report-subtitle">معماری، سازه، تاسیسات، و رندرها</p>
-        <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="report2" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">داشبورد مدیریتی درآمدهای مسکونی</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">داشبورد مدیریتی درآمدهای مسکونی</h2>
-        <p class="report-subtitle">تحلیل جامع درآمدها برای تصمیم‌گیری‌های کلان مدیریتی</p>
-        <p class="report-meta">بر اساس طرح بهنگام – شهریورماه ۱۴۰۴</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="report3" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">داشبورد مدیریتی برآورد هزینه</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">داشبورد مدیریتی برآورد هزینه</h2>
-        <p class="report-subtitle">برآورد هزینه‌های زیرساختی</p>
-        <p class="report-meta">بر اساس طرح بهنگام – شهریورماه ۱۴۰۴</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="report4" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</h2>
-        <p class="report-subtitle">اولویت‌بندی پروژه‌های زیرساختی</p>
-        <p class="report-meta">بر اساس طرح بهنگام – شهریورماه ۱۴۰۴</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="report5" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</h2>
-        <p class="report-subtitle">تحلیل پروژه‌های بالقوه</p>
-        <p class="report-meta">بر اساس طرح بهنگام – شهریورماه ۱۴۰۴</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="report6" class="report-page">
-  <div class="report-container">
-    <div class="report-header">
-      <div class="report-header-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
-      <div class="report-header-actions">
-        <div class="back-button report-back"><span>بازگشت</span><span class="back-arrow"></span></div>
-        <button class="logout-btn logout-any" type="button">خروج</button>
-      </div>
-    </div>
-    <div class="report-body">
-      <div class="report-card">
-        <div class="report-logos-row">
-          <img src="logo-left.jpg"  alt="لوگوی چپ">
-          <img src="logo-right.jpg" alt="لوگوی وسط">
-          <img src="logo-right.jpg" alt="لوگوی راست">
-        </div>
-        <div class="report-divider"></div>
-        <h2 class="report-main-title">بسته‌های پیشنهادی پروژه‌های بالقوه</h2>
-        <p class="report-subtitle">معرفی بسته‌های سرمایه‌گذاری</p>
-        <p class="report-meta">بر اساس طرح بهنگام – شهریورماه ۱۴۰۴</p>
-      </div>
-    </div>
+    <button id="logoutBtn" class="intro-logout">خروج</button>
   </div>
 </div>
 
