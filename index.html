@@ -5,11 +5,14 @@
   <title>داشبورد مدیریتی</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Font -->
   <style>
     @font-face {
       font-family: "B Nazanin";
       src: url("BNazanin.woff2") format("woff2"),
            url("BNazanin.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
     }
   </style>
 
@@ -17,22 +20,21 @@
 </head>
 <body>
 
-<!-- اینجا صفحات تزریق می‌شوند -->
-<div id="app"></div>
+  <!-- Pages will be injected here -->
+  <div id="app"></div>
 
-<!-- صفحات (هرکدام جدا) -->
-<script src="./js/pages/login.js"></script>
-<script src="./js/pages/intro.js"></script>
-<script src="./js/pages/toc.js"></script>
+  <!-- Page templates -->
+  <script src="./js/pages/login.js"></script>
+  <script src="./js/pages/intro.js"></script>
+  <script src="./js/pages/toc.js"></script>
+  <script src="./js/pages/report1.js"></script>
+  <script src="./js/pages/report2.js"></script>
+  <script src="./js/pages/report3.js"></script>
+  <script src="./js/pages/report4.js"></script>
+  <script src="./js/pages/report5.js"></script>
+  <script src="./js/pages/report6.js"></script>
 
-<script src="./js/pages/report1.js"></script>
-<script src="./js/pages/report2.js"></script>
-<script src="./js/pages/report3.js"></script>
-<script src="./js/pages/report4.js"></script>
-<script src="./js/pages/report5.js"></script>
-<script src="./js/pages/report6.js"></script>
-
-<!-- کنترل اصلی -->
-<script src="./js/app.js"></script>
+  <!-- App controller -->
+  <script src="./js/app.js"></script>
 </body>
 </html>
