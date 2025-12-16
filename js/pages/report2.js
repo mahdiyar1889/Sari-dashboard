@@ -1,7 +1,7 @@
 window.Pages = window.Pages || {};
 
-window.Pages.report1 = `
-<div id="report1" class="report-page">
+window.Pages.report2 = `
+<div id="report2" class="report-page">
   <div class="report-container">
 
     <!-- Header -->
