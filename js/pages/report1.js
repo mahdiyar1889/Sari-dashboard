@@ -1,5 +1,29 @@
 window.Pages = window.Pages || {};
 
+/* =========================
+   Helpers
+========================= */
+
+// تاریخ شمسی امروز
+function getTodayJalali() {
+  const d = new Date();
+  return new Intl.DateTimeFormat('fa-IR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(d);
+}
+
+// ساخت کد گزارش
+function getReportCode() {
+  const today = getTodayJalali().replace(/\//g, '-');
+  return `R1-${today}`;
+}
+
+/* =========================
+   Page
+========================= */
+
 window.Pages.report1 = `
 <div id="report1" class="report-page">
   <div class="report-container">
@@ -12,14 +36,14 @@ window.Pages.report1 = `
         <button class="btn-lite logout-any" type="button">خروج</button>
       </div>
 
-      <!-- Right title + (print-only meta) -->
+      <!-- Right title + print meta -->
       <div class="report-header-right">
         <div class="report-header-title">اطلاعات قراردادی</div>
 
-        <!-- فقط در چاپ نمایش داده می‌شود -->
+        <!-- فقط در چاپ -->
         <div class="report-print-meta">
-          <span class="report-print-code">کد گزارش: R-1404-001</span>
-          <span class="report-print-date">تاریخ: ۱۴۰۴/۰۵/۰۱</span>
+          <span class="report-print-code"></span>
+          <span class="report-print-date"></span>
         </div>
       </div>
     </div>
@@ -45,3 +69,23 @@ window.Pages.report1 = `
   </div>
 </div>
 `;
+
+/* =========================
+   Init (بعد از Render)
+========================= */
+
+window.initReport1 = function () {
+  const page = document.getElementById('report1');
+  if (!page) return;
+
+  const dateEl = page.querySelector('.report-print-date');
+  const codeEl = page.querySelector('.report-print-code');
+
+  if (dateEl) {
+    dateEl.textContent = `تاریخ: ${getTodayJalali()}`;
+  }
+
+  if (codeEl) {
+    codeEl.textContent = `کد گزارش: ${getReportCode()}`;
+  }
+};
