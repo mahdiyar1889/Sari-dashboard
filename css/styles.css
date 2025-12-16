@@ -11,7 +11,7 @@ body{
   background:#e5e7eb;
 }
 
-/* ⚠️ مثل نسخه اولیه: img سراسری */
+/* img global */
 img{
   max-width:100%;
   height:auto;
@@ -49,7 +49,7 @@ button, input{
 .toc-page,
 .report-page{
   min-height:100vh;
-  display:none; /* کنترل با JS */
+  display:none;
 }
 
 /* =========================
@@ -144,9 +144,7 @@ button, input{
   cursor:pointer;
   transition: color .2s ease;
 }
-.intro-title:hover{
-  color:#2563eb;
-}
+.intro-title:hover{ color:#2563eb; }
 
 .intro-subtitle{
   margin:10px 0 0;
@@ -167,10 +165,7 @@ button, input{
   gap:40px;
   margin:64px 0 14px;
 }
-
-.intro-bottom-logos img{
-  height:80px;
-}
+.intro-bottom-logos img{ height:80px; }
 
 /* =========================
    TOC Page
@@ -178,6 +173,7 @@ button, input{
 .toc-page{
   padding:22px 18px 30px;
   background:#e7edf4;
+  direction:rtl;
 }
 
 .toc-container{
@@ -207,6 +203,7 @@ button, input{
 .toc-actions{
   display:flex;
   gap:10px;
+  direction:ltr;
 }
 
 /* خروج قرمز فقط برای TOC */
@@ -214,9 +211,7 @@ button, input{
   background:#ef4444;
   color:#fff;
 }
-#logoutBtn2:hover{
-  background:#dc2626;
-}
+#logoutBtn2:hover{ background:#dc2626; }
 
 .toc-grid{
   display:grid;
@@ -234,7 +229,6 @@ button, input{
   cursor:pointer;
   transition:transform .18s ease, box-shadow .18s ease;
 }
-
 .toc-card:hover{
   transform:translateY(-4px);
   box-shadow:0 20px 40px rgba(0,0,0,.14);
@@ -245,7 +239,6 @@ button, input{
   font-weight:900;
   line-height:1.5;
 }
-
 .toc-card-subtitle{
   margin-top:10px;
   font-size:15px;
@@ -253,7 +246,7 @@ button, input{
   line-height:1.7;
 }
 
-/* ریسپانسیو */
+/* Responsive */
 @media (max-width: 980px){
   .toc-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
@@ -268,6 +261,7 @@ button, input{
 .report-page{
   background:#e7edf4;
   padding:22px 16px;
+  direction:rtl;
 }
 
 .report-container{
@@ -279,7 +273,7 @@ button, input{
   overflow:hidden;
 }
 
-/* Header for reports (Back + Logout) */
+/* Header */
 .report-header{
   display:flex;
   align-items:center;
@@ -292,21 +286,21 @@ button, input{
 .report-header-title{
   font-size:28px;
   font-weight:900;
+  text-align:right;
 }
 
 .report-actions{
   display:flex;
   gap:10px;
+  direction:ltr;
 }
 
-/* خروج قرمز برای همه reportها */
+/* خروج قرمز برای report */
 .logout-any{
   background:#ef4444;
   color:#fff;
 }
-.logout-any:hover{
-  background:#dc2626;
-}
+.logout-any:hover{ background:#dc2626; }
 
 .report-card{
   background:#ffffff;
@@ -314,19 +308,16 @@ button, input{
   padding:34px 26px 28px;
 }
 
-/* logos row */
+/* Logos */
 .report-logos-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
   margin-bottom:22px;
 }
+.report-logos-row img{ height:78px; }
 
-.report-logos-row img{
-  height:78px;
-}
-
-/* ✅ فقط حذف لوگوی وسط در حالت ۳ لوگو */
+/* حذف لوگوی وسط در حالت ۳ لوگو */
 .report-logos-row img:nth-child(2):nth-last-child(2){
   display:none;
 }
