@@ -4,7 +4,7 @@ window.Pages.intro = `
 <div id="introPage" class="intro-page">
   <div class="intro-frame">
 
-    <img src="logo-right.jpg" class="intro-top-logo" alt="لوگو" />
+    <div class="intro-top-text">باسمه تعالی</div>
 
     <h1 id="introTitle" class="intro-title">
       خدمات مطالعات و طراحی کامل ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران
