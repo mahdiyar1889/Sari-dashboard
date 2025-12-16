@@ -89,3 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("logoutBtn2")?.addEventListener("click", logout);
   document.querySelectorAll(".logout-any").forEach(btn => btn.addEventListener("click", logout));
 });
+
+document.addEventListener("click", (e) => {
+  // بازگشت از reportها به فهرست
+  if (e.target.closest(".report-back")) {
+    showPage("toc");
+  }
+
+  // خروج از هرجا
+  if (e.target.closest(".logout-any")) {
+    logout();
+  }
+});
