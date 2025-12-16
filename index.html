@@ -9,14 +9,18 @@
   <style>
     @font-face {
       font-family: "B Nazanin";
-      src: url("BNazanin.woff2") format("woff2"),
-           url("BNazanin.woff") format("woff");
+      src: url("./BNazanin.woff2") format("woff2"),
+           url("./BNazanin.woff") format("woff");
       font-weight: normal;
       font-style: normal;
     }
   </style>
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <!-- ✅ Global CSS (امن و عمومی) -->
+  <link rel="stylesheet" href="./css/styles.global.css" />
+
+  <!-- ✅ Report CSS (فقط مخصوص reportها) -->
+  <link rel="stylesheet" href="./css/styles.report.css" />
 </head>
 <body>
 
@@ -36,5 +40,6 @@
 
   <!-- App controller -->
   <script src="./js/app.js"></script>
+
 </body>
 </html>
