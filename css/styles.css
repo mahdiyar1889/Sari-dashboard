@@ -378,12 +378,21 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   font-weight:bold;
   text-align:center;
 }
+/* مطمئن شو کارت intro روی hover درست کار کند */
+.intro-frame{
+  display: block; /* مهم */
+}
 
+/* عنوان: اجازه دریافت hover */
 .intro-title{
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
   transition: color 0.3s ease;
 }
 
-.intro-frame:hover .intro-title{
+/* آبی شدن */
+.intro-title:hover{
   color:#1e88e5;
 }
 
