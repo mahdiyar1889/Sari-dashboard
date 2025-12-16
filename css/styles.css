@@ -277,10 +277,11 @@ button, input{
 .report-header{
   display:flex;
   align-items:center;
-  justify-content:space-between; /* چپ: دکمه‌ها / راست: عنوان */
+  justify-content:space-between;
   padding:10px 6px 22px;
   border-bottom:1px solid rgba(0,0,0,.08);
   margin-bottom:22px;
+  direction:rtl; /* ✅ اضافه شد: جلوگیری از جابه‌جایی عنوان/دکمه‌ها */
 }
 
 .report-header-right{
