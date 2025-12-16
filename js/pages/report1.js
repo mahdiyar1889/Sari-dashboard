@@ -1,7 +1,7 @@
 window.Pages = window.Pages || {};
 
 /* =========================
-   Helpers (مشترک)
+   Helpers
 ========================= */
 
 // تاریخ شمسی امروز (YYYY/MM/DD)
@@ -14,7 +14,7 @@ function getTodayJalali() {
   }).format(d);
 }
 
-// تولید کد گزارش مخصوص report1
+// کد گزارش مخصوص report1
 function makeReport1Code() {
   const today = getTodayJalali().replace(/\//g, '-');
   return `R1-${today}`;
@@ -30,13 +30,7 @@ window.Pages.report1 = `
 
     <!-- Header -->
     <div class="report-header">
-      <!-- Left actions -->
-      <div class="report-actions">
-        <button class="btn-lite report-back" type="button">بازگشت</button>
-        <button class="btn-lite logout-any" type="button">خروج</button>
-      </div>
-
-      <!-- Right title + print meta -->
+      <!-- Right title (اول میاد تا در RTL سمت راست بنشیند) -->
       <div class="report-header-right">
         <div class="report-header-title">اطلاعات قراردادی</div>
 
@@ -45,6 +39,12 @@ window.Pages.report1 = `
           <span class="report-print-code"></span>
           <span class="report-print-date"></span>
         </div>
+      </div>
+
+      <!-- Left actions -->
+      <div class="report-actions">
+        <button class="btn-lite report-back" type="button">بازگشت</button>
+        <button class="btn-lite logout-any" type="button">خروج</button>
       </div>
     </div>
 
@@ -71,7 +71,8 @@ window.Pages.report1 = `
 `;
 
 /* =========================
-   Init: report1 (خیلی مهم)
+   Init: report1
+   (بعد از render کردن report1 صدا بزن)
 ========================= */
 
 function initReport1() {
