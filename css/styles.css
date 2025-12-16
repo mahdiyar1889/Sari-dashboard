@@ -1,402 +1,69 @@
 /* =========================
-   Base
+   Maps (report2)
 ========================= */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-
-body{
-  margin:0;
-  font-family:"B Nazanin", sans-serif;
-  color:#1f2937;
-  background:#e5e7eb;
+.maps-grid{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
-img{ max-width:100%; height:auto; display:block; }
-button, input{ font-family:"B Nazanin", sans-serif; }
-
-/* helper buttons */
-.btn-lite{
-  border:none;
-  background:#ffffff;
-  color:#111827;
-  border-radius:999px;
-  padding:9px 16px;
-  cursor:pointer;
-  box-shadow:0 10px 22px rgba(0,0,0,.12);
-  transition:transform .15s ease, background .15s ease;
-  font-size:15px;
-}
-.btn-lite:hover{ background:#f1f5f9; transform:translateY(-1px); }
-
-/* =========================
-   Login Page
-========================= */
-.login-page{
-  min-height:100vh;
-  display:none; /* JS shows */
-  align-items:center;
-  justify-content:center;
-  padding:24px 12px;
-  background:#eef2f7;
+.maps-card{
+  background:#f8fafc;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 8px 18px rgba(15,35,90,.06);
 }
 
-.login-card{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  padding:28px 22px;
-  border-radius:18px;
-  box-shadow:0 18px 40px rgba(0,0,0,.10);
-  border:1px solid rgba(0,0,0,.05);
+.maps-card-title{
+  font-size:18px;
+  font-weight:900;
+  color:#18253b;
+  margin-bottom:10px;
 }
 
-.login-title{
-  margin:0 0 14px;
-  text-align:center;
-  font-size:22px;
-  font-weight:800;
-}
-
-.login-form{
+.maps-list{
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
-.login-label{ font-size:14px; color:#475569; }
-.login-input{
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid #d6ddea;
-  font-size:15px;
-  outline:none;
-  background:#fff;
-}
-.login-input:focus{ border-color:#7aa7ff; box-shadow:0 0 0 3px rgba(99,102,241,.15); }
-
-.login-button{
-  margin-top:8px;
-  border:none;
-  border-radius:14px;
-  padding:10px 12px;
-  cursor:pointer;
-  background:#2563eb;
-  color:#fff;
-  font-size:16px;
-  box-shadow:0 14px 30px rgba(37,99,235,.25);
-}
-.login-button:hover{ filter:brightness(0.98); }
-
-.login-error{
-  margin:6px 0 0;
-  color:#dc2626;
-  font-size:14px;
-  min-height:18px;
-}
-
-/* =========================
-   Intro Page (like sample)
-========================= */
-.intro-page{
-  min-height:100vh;
-  display:none; /* JS shows */
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:#d1d5db;
-}
-
-.intro-frame{
-  width:min(1200px, 95vw);
-  background:#f8fafc;
-  border-radius:14px;
-  padding:58px 42px 44px;
-  text-align:center;
-  box-shadow:0 20px 55px rgba(0,0,0,.22);
-  border:1px solid rgba(0,0,0,.06);
-}
-
-.intro-top-logo{
-  height:86px;
-  width:auto;
-  object-fit:contain;
-  margin:0 auto 38px;
-}
-
-.intro-title{
-  margin:0;
-  font-size:64px;
-  font-weight:900;
-  line-height:1.5;
-  cursor:pointer;
-  color:#1f2937;
-}
-
-.intro-subtitle{
-  margin:10px 0 0;
-  font-size:30px;
-  font-weight:800;
-  color:#374151;
-}
-
-.intro-caption{
-  margin:18px 0 0;
-  font-size:18px;
-  color:#6b7280;
-}
-
-.intro-bottom-logos{
+.maps-item{
   display:flex;
-  justify-content:center;
   align-items:center;
-  gap:40px;
-  margin:64px 0 14px;
+  justify-content:space-between;
+  gap:12px;
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:12px;
+  padding:10px 10px;
 }
 
-.intro-bottom-logos img{
-  height:80px;
-  width:auto;
-  object-fit:contain;
-  opacity:.98;
+.maps-item-name{
+  font-size:15px;
+  color:#111827;
+  line-height:1.6;
 }
 
-.intro-meta{
-  margin:8px 0 18px;
-  font-size:18px;
-  color:#374151;
-  line-height:1.9;
-}
-
-.intro-logout{
-  border:none;
+.maps-download{
+  text-decoration:none;
   background:#ffffff;
   color:#111827;
   border-radius:999px;
-  padding:10px 18px;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 10px 22px rgba(0,0,0,.14);
+  padding:8px 14px;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
   transition:transform .15s ease, background .15s ease;
-}
-.intro-logout:hover{ background:#f1f5f9; transform:translateY(-1px); }
-
-/* =========================
-   TOC Page
-========================= */
-.toc-page{
-  min-height:100vh;
-  display:none; /* JS shows */
-  padding:22px 18px 30px;
-  background:#e7edf4;
+  white-space:nowrap;
+  font-size:14px;
 }
 
-.toc-container{
-  max-width:1200px;
-  margin:0 auto;
-  background:#f5f8fc;
-  border-radius:20px;
-  box-shadow:0 12px 30px rgba(0,0,0,.06);
-  padding:20px 18px 26px;
-  border:1px solid rgba(0,0,0,.05);
+.maps-download:hover{
+  background:#f1f5f9;
+  transform:translateY(-1px);
 }
 
-.toc-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  border-bottom:1px solid #dde3ee;
-  padding-bottom:14px;
-  margin-bottom:18px;
-}
-
-.toc-title{
-  font-size:22px;
-  font-weight:900;
-  color:#1f2b3c;
-}
-
-.toc-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.toc-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:16px;
-}
-
-.toc-card{
-  background:#fff;
-  border-radius:16px;
-  padding:18px 16px;
-  box-shadow:0 8px 18px rgba(15,35,90,.08);
-  cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease;
-  border:1px solid rgba(0,0,0,.05);
-}
-.toc-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 26px rgba(15,35,90,.12);
-}
-
-.toc-card-title{
-  font-size:17px;
-  font-weight:900;
-  color:#18253b;
-  margin-bottom:6px;
-}
-
-.toc-card-subtitle{
-  font-size:13px;
-  color:#6a768c;
-}
-
+/* موبایل */
 @media (max-width:900px){
-  .toc-grid{ grid-template-columns:1fr; }
-}
-
-/* =========================
-   Report Pages
-========================= */
-.report-page{
-  min-height:100vh;
-  display:none; /* JS shows */
-  background:#e7edf4;
-  padding:22px 16px;
-}
-
-.report-container{
-  max-width:1200px;
-  margin:0 auto;
-  background:#f5f8fc;
-  border-radius:20px;
-  box-shadow:0 12px 30px rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.05);
-  overflow:hidden;
-}
-
-.report-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 18px;
-  background:#e2e8f0;
-}
-
-.report-header-title{
-  font-size:18px;
-  font-weight:900;
-  color:#1f2b3c;
-}
-
-.report-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.report-body{
-  padding:18px;
-}
-
-.report-card{
-  background:#ffffff;
-  border-radius:18px;
-  padding:34px 26px 28px;
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.05);
-}
-
-.report-logos-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  margin-bottom:22px;
-}
-
-.report-logos-row img{
-  height:78px;
-  width:auto;
-  object-fit:contain;
-}
-
-/* حذف کامل و دائمی آرم وسط */
-.report-logos-row img:nth-child(2) {
-  display: none !important;
-}
-
-.report-divider{
-  height:4px;
-  background:#3f3d9b;
-  margin:0 0 22px;
-  border-radius:999px;
-  opacity:.95;
-}
-
-.report-main-title{
-  font-size:34px;
-  text-align:center;
-  margin:0 0 10px;
-  color:#262f87;
-  font-weight:900;
-}
-
-.report-subtitle{
-  text-align:center;
-  margin:0 0 10px;
-  font-size:18px;
-  color:#334155;
-}
-
-.report-meta{
-  text-align:center;
-  margin:0;
-  font-size:15px;
-  color:#6b7280;
-}
-
-/* mobile */
-@media (max-width:900px){
-  .intro-title{ font-size:34px; }
-  .intro-subtitle{ font-size:20px; }
-  .intro-bottom-logos{ margin-top:34px; gap:18px; }
-  .intro-bottom-logos img{ height:54px; }
-
-  .report-card{ padding:24px 16px; }
-  .report-logos-row{ flex-direction:column; }
-  .report-logos-row img{ height:62px; }
-  .report-main-title{ font-size:26px; }
-}
-/* intro top text */
-.intro-top-text{
-  min-height:86px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 38px;
-  font-size:20px;
-  font-weight:bold;
-  text-align:center;
-}
-/* مطمئن شو کارت intro روی hover درست کار کند */
-.intro-frame{
-  display: block; /* مهم */
-}
-
-/* عنوان: اجازه دریافت hover */
-.intro-title{
-  position: relative;
-  z-index: 10;
-  pointer-events: auto;
-  transition: color 0.3s ease;
-}
-
-/* آبی شدن */
-.intro-title:hover{
-  color:#1e88e5;
+  .maps-grid{ grid-template-columns: 1fr; }
 }
