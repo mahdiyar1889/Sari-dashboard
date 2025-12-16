@@ -1,10 +1,10 @@
 window.Pages = window.Pages || {};
 
 /* =========================
-   Helpers
+   Helpers (مشترک)
 ========================= */
 
-// تاریخ شمسی امروز
+// تاریخ شمسی امروز (YYYY/MM/DD)
 function getTodayJalali() {
   const d = new Date();
   return new Intl.DateTimeFormat('fa-IR', {
@@ -14,14 +14,14 @@ function getTodayJalali() {
   }).format(d);
 }
 
-// ساخت کد گزارش
-function getReportCode() {
+// تولید کد گزارش مخصوص report1
+function makeReport1Code() {
   const today = getTodayJalali().replace(/\//g, '-');
   return `R1-${today}`;
 }
 
 /* =========================
-   Page
+   Page: report1
 ========================= */
 
 window.Pages.report1 = `
@@ -40,7 +40,7 @@ window.Pages.report1 = `
       <div class="report-header-right">
         <div class="report-header-title">اطلاعات قراردادی</div>
 
-        <!-- فقط در چاپ -->
+        <!-- فقط در چاپ نمایش داده می‌شود -->
         <div class="report-print-meta">
           <span class="report-print-code"></span>
           <span class="report-print-date"></span>
@@ -71,10 +71,10 @@ window.Pages.report1 = `
 `;
 
 /* =========================
-   Init (بعد از Render)
+   Init: report1 (خیلی مهم)
 ========================= */
 
-window.initReport1 = function () {
+function initReport1() {
   const page = document.getElementById('report1');
   if (!page) return;
 
@@ -86,6 +86,6 @@ window.initReport1 = function () {
   }
 
   if (codeEl) {
-    codeEl.textContent = `کد گزارش: ${getReportCode()}`;
+    codeEl.textContent = `کد گزارش: ${makeReport1Code()}`;
   }
-};
+}
