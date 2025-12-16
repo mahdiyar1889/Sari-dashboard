@@ -9,11 +9,19 @@ window.Pages.report1 = `
       <!-- Left actions -->
       <div class="report-actions">
         <button class="btn-lite report-back" type="button">بازگشت</button>
-        <button class="btn-lite logout-any btn-exit" type="button">خروج</button>
+        <button class="btn-lite logout-any" type="button">خروج</button>
       </div>
 
-      <!-- Right title -->
-      <div class="report-header-title">اطلاعات قراردادی</div>
+      <!-- Right title + (print-only meta) -->
+      <div class="report-header-right">
+        <div class="report-header-title">اطلاعات قراردادی</div>
+
+        <!-- فقط در چاپ نمایش داده می‌شود -->
+        <div class="report-print-meta">
+          <span class="report-print-code">کد گزارش: R-1404-001</span>
+          <span class="report-print-date">تاریخ: ۱۴۰۴/۰۵/۰۱</span>
+        </div>
+      </div>
     </div>
 
     <!-- Body -->
