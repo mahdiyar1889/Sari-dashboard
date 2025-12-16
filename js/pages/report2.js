@@ -1,6 +1,7 @@
 window.Pages = window.Pages || {};
-window.Pages.report1 = `
-<div id="report1" class="report-page">
+
+window.Pages.report2 = `
+<div id="report2" class="report-page">
   <div class="report-container">
     <div class="report-header">
       <div class="report-header-title">نقشه‌ها</div>
@@ -20,7 +21,7 @@ window.Pages.report1 = `
         <div class="report-divider"></div>
 
         <h2 class="report-main-title">نقشه‌ها</h2>
-        <p class="report-subtitle">(معماری، سازه، تاسیسات، و رندرها)</p>
+        <p class="report-subtitle">(معماری، سازه، تأسیسات، و ...)</p>
         <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
       </div>
     </div>
