@@ -378,3 +378,5 @@ button, input{
 #logoutBtn2:hover{
   background:#dc2626 !important;
 }
+
+body { outline: 6px solid red !important; }
