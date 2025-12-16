@@ -1,5 +1,4 @@
 window.Pages = window.Pages || {};
-
 window.Pages.report2 = `
 <div id="report2" class="report-page">
   <div class="report-container">
@@ -21,7 +20,7 @@ window.Pages.report2 = `
         <div class="report-divider"></div>
 
         <h2 class="report-main-title">نقشه‌ها</h2>
-        <p class="report-subtitle">(معماری، سازه، تأسیسات، و ...)</p>
+        <p class="report-subtitle">(معماری، سازه، تاسیسات، و ...)</p>
         <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
       </div>
     </div>
