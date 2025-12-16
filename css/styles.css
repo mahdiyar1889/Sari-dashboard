@@ -11,8 +11,16 @@ body{
   background:#e5e7eb;
 }
 
-img{ max-width:100%; height:auto; display:block; }
-button, input{ font-family:"B Nazanin", sans-serif; }
+/* ⚠️ مثل نسخه اولیه: img سراسری */
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+button, input{
+  font-family:"B Nazanin", sans-serif;
+}
 
 /* =========================
    Buttons
@@ -34,18 +42,157 @@ button, input{ font-family:"B Nazanin", sans-serif; }
 }
 
 /* =========================
-   Pages Base
+   Pages Base (مثل نسخه اولیه)
 ========================= */
 .login-page,
 .intro-page,
 .toc-page,
 .report-page{
   min-height:100vh;
-  display:none;
+  display:none; /* کنترل با JS */
 }
 
 /* =========================
-   Report Pages
+   Login Page
+========================= */
+.login-page{
+  align-items:center;
+  justify-content:center;
+  padding:24px 12px;
+  background:#eef2f7;
+}
+
+.login-card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:28px 22px;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+  border:1px solid rgba(0,0,0,.05);
+}
+
+.login-title{
+  margin:0 0 14px;
+  text-align:center;
+  font-size:22px;
+  font-weight:800;
+}
+
+.login-form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.login-label{ font-size:14px; color:#475569; }
+
+.login-input{
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #d6ddea;
+  font-size:15px;
+  outline:none;
+}
+.login-input:focus{
+  border-color:#7aa7ff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+.login-button{
+  margin-top:8px;
+  border:none;
+  border-radius:14px;
+  padding:10px 12px;
+  cursor:pointer;
+  background:#2563eb;
+  color:#fff;
+  font-size:16px;
+  box-shadow:0 14px 30px rgba(37,99,235,.25);
+}
+
+/* =========================
+   Intro Page (نسخه سالم)
+========================= */
+.intro-page{
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:#d1d5db;
+}
+
+.intro-frame{
+  width:min(1200px, 95vw);
+  background:#f8fafc;
+  border-radius:14px;
+  padding:58px 42px 44px;
+  text-align:center;
+  box-shadow:0 20px 55px rgba(0,0,0,.22);
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.intro-top-logo{
+  height:86px;
+  margin:0 auto 38px;
+}
+
+.intro-title{
+  margin:0;
+  font-size:64px;
+  font-weight:900;
+  line-height:1.5;
+  cursor:pointer;
+}
+
+.intro-subtitle{
+  margin:10px 0 0;
+  font-size:30px;
+  font-weight:800;
+}
+
+.intro-caption{
+  margin:18px 0 0;
+  font-size:18px;
+  color:#6b7280;
+}
+
+.intro-bottom-logos{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  margin:64px 0 14px;
+}
+
+.intro-bottom-logos img{
+  height:80px;
+}
+
+/* =========================
+   TOC Page
+========================= */
+.toc-page{
+  padding:22px 18px 30px;
+  background:#e7edf4;
+}
+
+.toc-container{
+  max-width:1200px;
+  margin:0 auto;
+  background:#f5f8fc;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+  padding:20px 18px 26px;
+}
+
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+}
+
+/* =========================
+   Report Pages (مثل قبل)
 ========================= */
 .report-page{
   background:#e7edf4;
@@ -58,44 +205,16 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   background:#f5f8fc;
   border-radius:20px;
   box-shadow:0 12px 30px rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.05);
   overflow:hidden;
-}
-
-.report-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 18px;
-  background:#e2e8f0;
-}
-
-.report-header-title{
-  font-size:18px;
-  font-weight:900;
-  color:#1f2b3c;
-}
-
-.report-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.report-body{
-  padding:18px;
 }
 
 .report-card{
   background:#ffffff;
   border-radius:18px;
   padding:34px 26px 28px;
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.05);
 }
 
-/* logos row (فقط چپ و راست) */
+/* logos row */
 .report-logos-row{
   display:flex;
   align-items:center;
@@ -105,40 +224,26 @@ button, input{ font-family:"B Nazanin", sans-serif; }
 
 .report-logos-row img{
   height:78px;
-  width:auto;
-  object-fit:contain;
 }
 
-/* ✅ حذف فقط لوگوی وسط (فقط وقتی 3 لوگو داریم) */
+/* ✅ فقط حذف لوگوی وسط در حالت ۳ لوگو */
 .report-logos-row img:nth-child(2):nth-last-child(2){
-  display:none !important;
+  display:none;
 }
 
 .report-divider{
   height:4px;
   background:#3f3d9b;
-  margin:0 0 22px;
-  border-radius:999px;
+  margin-bottom:22px;
 }
 
 .report-main-title{
   font-size:34px;
   text-align:center;
-  margin:0 0 10px;
-  color:#262f87;
   font-weight:900;
 }
 
-.report-subtitle{
-  text-align:center;
-  margin:0 0 10px;
-  font-size:18px;
-  color:#334155;
-}
-
+.report-subtitle,
 .report-meta{
   text-align:center;
-  margin:0;
-  font-size:15px;
-  color:#6b7280;
 }
