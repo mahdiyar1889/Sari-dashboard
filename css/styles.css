@@ -135,13 +135,17 @@ button, input{
   height:86px;
   margin:0 auto 38px;
 }
-
 .intro-title{
   margin:0;
   font-size:64px;
   font-weight:900;
   line-height:1.5;
   cursor:pointer;
+  transition: color .2s ease;
+}
+
+.intro-title:hover{
+  color:#2563eb;
 }
 
 .intro-subtitle{
@@ -149,6 +153,7 @@ button, input{
   font-size:30px;
   font-weight:800;
 }
+
 
 .intro-caption{
   margin:18px 0 0;
