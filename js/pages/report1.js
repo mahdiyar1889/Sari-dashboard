@@ -15,7 +15,6 @@ window.Pages.report1 = `
         <div class="report-logos-row">
           <img src="logo-left.jpg" alt="">
           <img src="logo-right.jpg" alt="">
-          <img src="logo-right.jpg" alt="">
         </div>
 
         <div class="report-divider"></div>
