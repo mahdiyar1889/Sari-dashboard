@@ -1,9 +1,9 @@
 /* =========================
-   Intro Page
+   Intro Page (like sample)
 ========================= */
 .intro-page{
   min-height:100vh;
-  display:none;
+  display:none; /* JS shows */
   align-items:center;
   justify-content:center;
   padding:24px;
@@ -20,17 +20,19 @@
   border:1px solid rgba(0,0,0,.06);
 }
 
-/* باسمه تعالی */
-.intro-top-text{
-  min-height:86px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.intro-top-logo{
+  height:86px;
+  width:auto;
+  object-fit:contain;
   margin:0 auto 38px;
+}
 
-  font-size:20px;
-  font-weight:bold;
-  text-align:center;
+/* متن باسمه تعالی */
+.intro-top-text{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* عنوان اصلی */
@@ -44,9 +46,16 @@
   transition: color 0.3s ease;
 }
 
-/* آبی شدن عنوان */
+/* hover → آبی شدن */
 .intro-title:hover{
   color:#1e88e5;
+}
+
+.intro-subtitle{
+  margin:10px 0 0;
+  font-size:30px;
+  font-weight:800;
+  color:#374151;
 }
 
 .intro-caption{
@@ -67,12 +76,14 @@
   height:80px;
   width:auto;
   object-fit:contain;
+  opacity:.98;
 }
 
 .intro-meta{
   margin:8px 0 18px;
   font-size:18px;
   color:#374151;
+  line-height:1.9;
 }
 
 .intro-logout{
@@ -84,4 +95,6 @@
   font-size:16px;
   cursor:pointer;
   box-shadow:0 10px 22px rgba(0,0,0,.14);
+  transition:transform .15s ease, background .15s ease;
 }
+.intro-logout:hover{ background:#f1f5f9; transform:translateY(-1px); }
