@@ -1,0 +1,43 @@
+/* =========================
+   Global Base (SAFE)
+========================= */
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+  margin:0;
+  font-family:"B Nazanin", sans-serif;
+  color:#1f2937;
+  background:#e5e7eb;
+}
+
+/* ⚠️ عمداً img را global استایل ندادیم تا صفحات به هم نریزد */
+
+/* form controls */
+button, input{
+  font-family:"B Nazanin", sans-serif;
+}
+
+/* =========================
+   Helpers
+========================= */
+.hidden{ display:none !important; }
+
+/* =========================
+   Buttons
+========================= */
+.btn-lite{
+  border:none;
+  background:#ffffff;
+  color:#111827;
+  border-radius:999px;
+  padding:9px 16px;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+  transition:transform .15s ease, background .15s ease;
+  font-size:15px;
+}
+.btn-lite:hover{
+  background:#f1f5f9;
+  transform:translateY(-1px);
+}
