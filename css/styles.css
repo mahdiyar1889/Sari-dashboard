@@ -325,6 +325,11 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   object-fit:contain;
 }
 
+/* حذف کامل و دائمی آرم وسط */
+.report-logos-row img:nth-child(2) {
+  display: none !important;
+}
+
 .report-divider{
   height:4px;
   background:#3f3d9b;
