@@ -1,17 +1,25 @@
 window.Pages = window.Pages || {};
+
 window.Pages.report1 = `
 <div id="report1" class="report-page">
   <div class="report-container">
+
+    <!-- Header -->
     <div class="report-header">
-      <div class="report-header-title">اطلاعات قراردادی</div>
+      <!-- Left actions -->
       <div class="report-actions">
         <button class="btn-lite report-back" type="button">بازگشت</button>
-        <button class="btn-lite logout-any" type="button">خروج</button>
+        <button class="btn-lite logout-any btn-exit" type="button">خروج</button>
       </div>
+
+      <!-- Right title -->
+      <div class="report-header-title">اطلاعات قراردادی</div>
     </div>
 
+    <!-- Body -->
     <div class="report-body">
       <div class="report-card">
+
         <div class="report-logos-row">
           <img src="logo-left.jpg" alt="">
           <img src="logo-right.jpg" alt="">
@@ -22,8 +30,10 @@ window.Pages.report1 = `
         <h2 class="report-main-title">اطلاعات قراردادی</h2>
         <p class="report-subtitle">(موضوع، مدت، مبلغ، و اسناد پیوست)</p>
         <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
+
       </div>
     </div>
+
   </div>
 </div>
 `;
