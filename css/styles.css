@@ -33,7 +33,7 @@ button, input{ font-family:"B Nazanin", sans-serif; }
 ========================= */
 .login-page{
   min-height:100vh;
-  display:none;
+  display:none; /* JS shows */
   align-items:center;
   justify-content:center;
   padding:24px 12px;
@@ -64,7 +64,6 @@ button, input{ font-family:"B Nazanin", sans-serif; }
 }
 
 .login-label{ font-size:14px; color:#475569; }
-
 .login-input{
   padding:10px 12px;
   border-radius:12px;
@@ -73,10 +72,7 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   outline:none;
   background:#fff;
 }
-.login-input:focus{
-  border-color:#7aa7ff;
-  box-shadow:0 0 0 3px rgba(99,102,241,.15);
-}
+.login-input:focus{ border-color:#7aa7ff; box-shadow:0 0 0 3px rgba(99,102,241,.15); }
 
 .login-button{
   margin-top:8px;
@@ -99,11 +95,11 @@ button, input{ font-family:"B Nazanin", sans-serif; }
 }
 
 /* =========================
-   Intro Page
+   Intro Page (like sample)
 ========================= */
 .intro-page{
   min-height:100vh;
-  display:none;
+  display:none; /* JS shows */
   align-items:center;
   justify-content:center;
   padding:24px;
@@ -120,34 +116,46 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   border:1px solid rgba(0,0,0,.06);
 }
 
-/* متن باسمه تعالی (جایگزین لوگو) */
-.intro-top-text{
-  min-height:86px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.intro-top-logo{
+  height:86px;
+  width:auto;
+  object-fit:contain;
   margin:0 auto 38px;
-
-  font-size:20px;
-  font-weight:bold;
-  color:#111827;
-  text-align:center;
 }
 
-/* عنوان اصلی */
+/* ✅ جایگزین لوگو با متن "باسمه تعالی" */
+.intro-top-text{
+  min-height: 86px;      /* مثل ارتفاع لوگو */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 38px;
+
+  font-size: 28px;
+  font-weight: 900;
+  color: #111827;
+  text-align: center;
+}
+
 .intro-title{
   margin:0;
   font-size:64px;
   font-weight:900;
   line-height:1.5;
-  color:#222;
   cursor:pointer;
-  transition: color 0.3s ease;
+  color:#1f2937;
+  transition: color 0.25s ease; /* ✅ اضافه شد */
 }
 
-/* hover → آبی شدن */
 .intro-title:hover{
-  color:#1e88e5;
+  color:#2563eb; /* ✅ آبی هنگام hover */
+}
+
+.intro-subtitle{
+  margin:10px 0 0;
+  font-size:30px;
+  font-weight:800;
+  color:#374151;
 }
 
 .intro-caption{
@@ -189,17 +197,14 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   box-shadow:0 10px 22px rgba(0,0,0,.14);
   transition:transform .15s ease, background .15s ease;
 }
-.intro-logout:hover{
-  background:#f1f5f9;
-  transform:translateY(-1px);
-}
+.intro-logout:hover{ background:#f1f5f9; transform:translateY(-1px); }
 
 /* =========================
    TOC Page
 ========================= */
 .toc-page{
   min-height:100vh;
-  display:none;
+  display:none; /* JS shows */
   padding:22px 18px 30px;
   background:#e7edf4;
 }
@@ -218,6 +223,7 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:12px;
   border-bottom:1px solid #dde3ee;
   padding-bottom:14px;
   margin-bottom:18px;
@@ -229,9 +235,15 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   color:#1f2b3c;
 }
 
+.toc-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
 .toc-grid{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(3, minmax(0, 1fr));
   gap:16px;
 }
 
@@ -253,6 +265,7 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   font-size:17px;
   font-weight:900;
   color:#18253b;
+  margin-bottom:6px;
 }
 
 .toc-card-subtitle{
@@ -260,12 +273,16 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   color:#6a768c;
 }
 
+@media (max-width:900px){
+  .toc-grid{ grid-template-columns:1fr; }
+}
+
 /* =========================
    Report Pages
 ========================= */
 .report-page{
   min-height:100vh;
-  display:none;
+  display:none; /* JS shows */
   background:#e7edf4;
   padding:22px 16px;
 }
@@ -277,21 +294,95 @@ button, input{ font-family:"B Nazanin", sans-serif; }
   border-radius:20px;
   box-shadow:0 12px 30px rgba(0,0,0,.06);
   border:1px solid rgba(0,0,0,.05);
+  overflow:hidden;
+}
+
+.report-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 18px;
+  background:#e2e8f0;
+}
+
+.report-header-title{
+  font-size:18px;
+  font-weight:900;
+  color:#1f2b3c;
+}
+
+.report-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.report-body{
+  padding:18px;
 }
 
 .report-card{
   background:#ffffff;
   border-radius:18px;
-  padding:34px 26px;
+  padding:34px 26px 28px;
   box-shadow:0 10px 28px rgba(0,0,0,.06);
   border:1px solid rgba(0,0,0,.05);
 }
 
-/* =========================
-   Mobile
-========================= */
+.report-logos-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.report-logos-row img{
+  height:78px;
+  width:auto;
+  object-fit:contain;
+}
+
+.report-divider{
+  height:4px;
+  background:#3f3d9b;
+  margin:0 0 22px;
+  border-radius:999px;
+  opacity:.95;
+}
+
+.report-main-title{
+  font-size:34px;
+  text-align:center;
+  margin:0 0 10px;
+  color:#262f87;
+  font-weight:900;
+}
+
+.report-subtitle{
+  text-align:center;
+  margin:0 0 10px;
+  font-size:18px;
+  color:#334155;
+}
+
+.report-meta{
+  text-align:center;
+  margin:0;
+  font-size:15px;
+  color:#6b7280;
+}
+
+/* mobile */
 @media (max-width:900px){
   .intro-title{ font-size:34px; }
-  .intro-top-text{ font-size:16px; }
+  .intro-subtitle{ font-size:20px; }
+  .intro-bottom-logos{ margin-top:34px; gap:18px; }
   .intro-bottom-logos img{ height:54px; }
+
+  .report-card{ padding:24px 16px; }
+  .report-logos-row{ flex-direction:column; }
+  .report-logos-row img{ height:62px; }
+  .report-main-title{ font-size:26px; }
 }
