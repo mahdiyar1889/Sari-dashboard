@@ -19,8 +19,6 @@ function makeReport2Code() {
 
 /* =========================
    Page: report2 (Maps)
-   Layout: LEFT = map + details (stacked)
-           RIGHT = zones accordion
 ========================= */
 window.Pages.report2 = `
 <div id="report2" class="report-page">
@@ -28,7 +26,7 @@ window.Pages.report2 = `
 
     <div class="report-header">
       <div class="report-header-right">
-        <div class="report-header-title">داشبورد تعاملی پروژه‌ها و نقشه ضوابط پهنه‌بندی</div>
+        <div class="report-header-title">نقشه های ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران</div>
 
         <div class="report-print-meta">
           <span class="report-print-code"></span>
@@ -65,9 +63,6 @@ window.Pages.report2 = `
 
               <div class="r2-details-grid">
                 <div>
-                  <div class="r2-details-sub">مشخصات پروژه</div>
-                  <div class="r2-kv"><span>کد پهنه:</span><b id="r2ZoneCode">—</b></div>
-                  <div class="r2-kv"><span>موقعیت:</span><b id="r2Location">—</b></div>
                   <div class="r2-kv"><span>مساحت:</span><b id="r2Area">—</b></div>
                 </div>
 
@@ -102,25 +97,23 @@ function initReport2() {
   const page = document.getElementById('report2');
   if (!page) return;
 
-  // print meta
+  // Print meta
   const dateEl = page.querySelector('.report-print-date');
   const codeEl = page.querySelector('.report-print-code');
   if (dateEl) dateEl.textContent = `تاریخ: ${getTodayJalali()}`;
   if (codeEl) codeEl.textContent = `کد گزارش: ${makeReport2Code()}`;
 
-  // ✅ Data (فعلاً همان نقشه شما)
+  // Data
   const mapsData = [
     {
-      groupId: 'S1',
+      groupId: 'B1',
       groupTitle: 'زیرزمین',
       items: [
         {
-          id: 'S1-sport',
+          id: 'basement-storage',
           title: 'انبار',
-          zoneCode: 'S12/S13',
-          location: 'ورودی شهرک',
-          area: '434,289 م.م',
-          desc: 'ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران',
+          area: '223 م.م',
+          desc: '—',
           img: 'maps/zirzamin.jpg'
         }
       ]
@@ -132,13 +125,11 @@ function initReport2() {
 
   const els = {
     title: page.querySelector('#r2DetailsTitle'),
-    zone: page.querySelector('#r2ZoneCode'),
-    loc: page.querySelector('#r2Location'),
     area: page.querySelector('#r2Area'),
     desc: page.querySelector('#r2Desc')
   };
 
-  // zoom state
+  // Zoom state
   const zoomState = { scale: 1 };
 
   function applyZoom() {
@@ -150,13 +141,12 @@ function initReport2() {
     if (mapImg) mapImg.src = item.img;
 
     if (els.title) els.title.textContent = item.title || '—';
-    if (els.zone) els.zone.textContent = item.zoneCode || '—';
-    if (els.loc) els.loc.textContent = item.location || '—';
-    if (els.area) els.area.textContent = item.area || '—';
-    if (els.desc) els.desc.textContent = item.desc || '—';
+    if (els.area)  els.area.textContent  = item.area  || '—';
+    if (els.desc)  els.desc.textContent  = item.desc  || '—';
 
     page.querySelectorAll('.r2-item-btn.is-active')
       .forEach(x => x.classList.remove('is-active'));
+
     const btn = page.querySelector(`.r2-item-btn[data-id="${item.id}"]`);
     if (btn) btn.classList.add('is-active');
 
@@ -185,7 +175,7 @@ function initReport2() {
       `;
     }).join('');
 
-    // accordion toggle
+    // Toggle
     acc.querySelectorAll('.r2-acc-head').forEach(head => {
       head.addEventListener('click', () => {
         const sec = head.closest('.r2-acc');
@@ -194,7 +184,7 @@ function initReport2() {
       });
     });
 
-    // item click
+    // Item click
     acc.querySelectorAll('.r2-item-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
@@ -206,11 +196,11 @@ function initReport2() {
 
   renderAccordion();
 
-  // initial
+  // Initial
   const initial = mapsData[0]?.items?.[0];
   if (initial) setActive(initial);
 
-  // zoom controls
+  // Zoom controls
   page.querySelector('.r2-zoom-in')?.addEventListener('click', () => {
     zoomState.scale = Math.min(3, +(zoomState.scale + 0.1).toFixed(2));
     applyZoom();
@@ -226,7 +216,7 @@ function initReport2() {
     applyZoom();
   });
 
-  // wheel zoom
+  // Wheel zoom
   const wrap = page.querySelector('.r2-map-wrap');
   wrap?.addEventListener('wheel', (e) => {
     e.preventDefault();
