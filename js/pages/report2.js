@@ -112,7 +112,7 @@ function initReport2() {
         {
           id: 'basement-storage',
           title: 'انبار',
-          area: '223 م.م',
+          area: '223 مترمربع',
           desc: '—',
           img: 'maps/zirzamin.jpg'
         }
