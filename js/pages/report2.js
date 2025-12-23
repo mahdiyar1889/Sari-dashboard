@@ -121,7 +121,7 @@ function initReport2() {
           location: 'ورودی شهرک',
           area: '434,289 م.م',
           desc: 'مجموعه ورزشی، شهر بازی و فضاهای پشتیبان مطابق طرح مصوب.',
-          img: 'maps/your-map-like-screenshot.jpg'
+          img: 'maps/zirzamin.jpg'
         }
       ]
     }
