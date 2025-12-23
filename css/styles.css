@@ -498,17 +498,14 @@ button, input{
   box-shadow: inset 0  0 0 1px rgba(6,95,70,.22);
 }
 
-/* responsive */
 @media (max-width: 1024px){
   #report2 .r2-grid{ grid-template-columns: 1fr; }
   #report2 .r2-side{ position:static; }
 }
 
-/* print */
 @media print{
   #report2 .report-actions{ display:none !important; }
   #report2 .report-print-meta{ display:flex !important; }
   #report2 .r2-side{ display:none !important; }
   #report2 .r2-map-wrap{ height: 520px; }
 }
-
