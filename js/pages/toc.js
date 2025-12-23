@@ -24,22 +24,22 @@ window.Pages.toc = `
       </div>
 
       <div class="toc-card" data-target="report3">
+        <div class="toc-card-title">رندرها</div>
+        <div class="toc-card-subtitle">نمای خارجی، نمای داخلی</div>
+      </div>
+
+      <div class="toc-card" data-target="report4">
         <div class="toc-card-title">برنامه زمانبندی</div>
         <div class="toc-card-subtitle">مطالعات مقدماتی، فاز اول، فاز دوم، برآورد مقادیر و هزینه</div>
       </div>
 
-      <div class="toc-card" data-target="report4">
-        <div class="toc-card-title">برآورد مقادیر و هزینه</div>
-        <div class="toc-card-subtitle">متره، آیتم های فهرست بها</div>
-      </div>
-
       <div class="toc-card" data-target="report5">
         <div class="toc-card-title">اسناد مناقصه</div>
-        <div class="toc-card-subtitle">برآورد هزینه‌ها ...</div>
+        <div class="toc-card-subtitle">متره، برآورد هزینه ها</div>
       </div>
 
       <div class="toc-card" data-target="report6">
-        <div class="toc-card-title">صورتجلسات</div>
+        <div class="toc-card-title">بازدیدها و صورتجلسات</div>
         <div class="toc-card-subtitle">...</div>
       </div>
     </div>
