@@ -138,9 +138,9 @@ button, input{
 
 /* Intro – Basmala */
 .intro-top-text{
-  font-size:42px;        /* درشت‌تر */
+  font-size:22px;        /* درشت‌تر */
   font-weight:700;
-  margin-bottom:56px;    /* فاصله بیشتر با عنوان */
+  margin-bottom:36px;    /* فاصله بیشتر با عنوان */
   color:#374151;
 }
 
