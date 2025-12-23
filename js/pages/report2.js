@@ -112,15 +112,15 @@ function initReport2() {
   const mapsData = [
     {
       groupId: 'S1',
-      groupTitle: 'پهنه S1 - عرصه ورودی',
+      groupTitle: 'زیرزمین',
       items: [
         {
           id: 'S1-sport',
-          title: 'مجموعه ورزشی و شهر بازی مدرن',
+          title: 'انبار',
           zoneCode: 'S12/S13',
           location: 'ورودی شهرک',
           area: '434,289 م.م',
-          desc: 'مجموعه ورزشی، شهر بازی و فضاهای پشتیبان مطابق طرح مصوب.',
+          desc: 'ساختمان تکمیلی اداره کل راه و شهرسازی استان مازندران',
           img: 'maps/zirzamin.jpg'
         }
       ]
