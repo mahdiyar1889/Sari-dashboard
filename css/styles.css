@@ -56,6 +56,7 @@ button, input{
    Login Page
 ========================= */
 .login-page{
+  display:flex;
   align-items:center;
   justify-content:center;
   padding:24px 12px;
@@ -79,42 +80,11 @@ button, input{
   font-weight:800;
 }
 
-.login-form{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.login-label{ font-size:14px; color:#475569; }
-
-.login-input{
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid #d6ddea;
-  font-size:15px;
-  outline:none;
-}
-.login-input:focus{
-  border-color:#7aa7ff;
-  box-shadow:0 0 0 3px rgba(99,102,241,.15);
-}
-
-.login-button{
-  margin-top:8px;
-  border:none;
-  border-radius:14px;
-  padding:10px 12px;
-  cursor:pointer;
-  background:#2563eb;
-  color:#fff;
-  font-size:16px;
-  box-shadow:0 14px 30px rgba(37,99,235,.25);
-}
-
 /* =========================
    Intro Page
 ========================= */
 .intro-page{
+  display:flex;
   align-items:center;
   justify-content:center;
   padding:24px;
@@ -131,38 +101,28 @@ button, input{
   border:1px solid rgba(0,0,0,.06);
 }
 
-.intro-top-logo{
-  height:86px;
-  margin:0 auto 38px;
-}
-
-/* Intro – Basmala */
+/* Basmala */
 .intro-top-text{
-  font-size:18px;        /* درشت‌تر */
-  font-weight:400;      /* غیر بولد */
-  margin-bottom:28px;    /* فاصله بیشتر با عنوان */
+  font-size:clamp(14px, 3.5vw, 18px);
+  font-weight:400;
+  margin-bottom:clamp(20px, 4vw, 28px);
   color:#374151;
 }
 
+/* Main Title */
 .intro-title{
   margin:0;
-  font-size:48px;
+  font-size:clamp(24px, 5vw, 48px);
   font-weight:800;
-  line-height:1.5;
+  line-height:1.6;
   cursor:pointer;
-  transition: color .2s ease;
+  transition:color .2s ease;
 }
 .intro-title:hover{ color:#2563eb; }
 
-.intro-subtitle{
-  margin:10px 0 0;
-  font-size:30px;
-  font-weight:800;
-}
-
 .intro-caption{
   margin:18px 0 0;
-  font-size:18px;
+  font-size:clamp(14px, 3.5vw, 18px);
   color:#6b7280;
 }
 
@@ -171,9 +131,15 @@ button, input{
   justify-content:center;
   align-items:center;
   gap:40px;
-  margin:64px 0 14px;
+  margin:48px 0 14px;
 }
 .intro-bottom-logos img{ height:80px; }
+
+.intro-meta{
+  margin-top:10px;
+  font-size:15px;
+  color:#374151;
+}
 
 /* =========================
    TOC Page
@@ -208,54 +174,6 @@ button, input{
   margin:0;
 }
 
-/* 🔁 جابجایی جای بازگشت / خروج */
-.toc-actions{
-  display:flex;
-  gap:10px;
-  direction:ltr;
-  flex-direction:row-reverse;
-}
-
-/* خروج قرمز فقط برای TOC */
-#logoutBtn2{
-  background:#ef4444;
-  color:#fff;
-}
-#logoutBtn2:hover{ background:#dc2626; }
-
-.toc-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:16px;
-}
-
-.toc-card{
-  background:#fff;
-  border-radius:18px;
-  padding:26px 22px;
-  text-align:center;
-  box-shadow:0 12px 26px rgba(0,0,0,.08);
-  border:1px solid rgba(0,0,0,.06);
-  cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.toc-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(0,0,0,.14);
-}
-
-.toc-card-title{
-  font-size:22px;
-  font-weight:900;
-  line-height:1.5;
-}
-.toc-card-subtitle{
-  margin-top:10px;
-  font-size:15px;
-  color:#6b7280;
-  line-height:1.7;
-}
-
 /* =========================
    Report Pages
 ========================= */
@@ -274,98 +192,7 @@ button, input{
   overflow:hidden;
 }
 
-/* Header */
-.report-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:10px 6px 22px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  margin-bottom:22px;
-  direction:rtl;
-}
-
-.report-header-right{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:6px;
-}
-
 .report-header-title{
   font-size:28px;
   font-weight:900;
-  text-align:right;
-}
-
-/* print meta: در حالت عادی مخفی */
-.report-print-meta{
-  display:none;
-}
-
-/* 🔁 جابجایی جای بازگشت / خروج در همه ریپورت‌ها */
-.report-actions{
-  display:flex;
-  gap:10px;
-  direction:ltr;
-  flex-direction:row-reverse;
-}
-
-/* خروج قرمز برای report */
-.logout-any{
-  background:#ef4444;
-  color:#fff;
-}
-.logout-any:hover{ background:#dc2626; }
-
-.report-card{
-  background:#ffffff;
-  border-radius:18px;
-  padding:34px 26px 28px;
-}
-
-/* Logos */
-.report-logos-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:22px;
-}
-.report-logos-row img{ height:78px; }
-
-.report-divider{
-  height:4px;
-  background:#3f3d9b;
-  margin-bottom:22px;
-}
-
-.report-main-title{
-  font-size:34px;
-  text-align:center;
-  font-weight:900;
-}
-
-.report-subtitle,
-.report-meta{
-  text-align:center;
-}
-
-/* =========================
-   Mobile adjustments
-========================= */
-@media (max-width: 768px){
-
-  .intro-title{
-    font-size:28px;     /* قبلاً 48px */
-    line-height:1.6;
-  }
-
-  .intro-top-text{
-    font-size:15px;
-    margin-bottom:20px;
-  }
-
-  .intro-caption{
-    font-size:15px;
-  }
 }
