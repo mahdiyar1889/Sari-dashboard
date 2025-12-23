@@ -19,6 +19,8 @@ function makeReport2Code() {
 
 /* =========================
    Page: report2 (Maps)
+   Layout: LEFT = map + details (stacked)
+           RIGHT = zones accordion
 ========================= */
 window.Pages.report2 = `
 <div id="report2" class="report-page">
@@ -45,8 +47,8 @@ window.Pages.report2 = `
 
         <div class="r2-grid">
 
-          <!-- main -->
-          <div class="r2-main">
+          <!-- LEFT: map + details -->
+          <div class="r2-left">
 
             <div class="r2-card">
               <div class="r2-map-wrap">
@@ -78,7 +80,7 @@ window.Pages.report2 = `
 
           </div>
 
-          <!-- sidebar -->
+          <!-- RIGHT: zones -->
           <aside class="r2-side">
             <div class="r2-side-title">پهنه‌ها</div>
             <div class="r2-accordion" id="r2Accordion"></div>
@@ -153,7 +155,8 @@ function initReport2() {
     if (els.area) els.area.textContent = item.area || '—';
     if (els.desc) els.desc.textContent = item.desc || '—';
 
-    page.querySelectorAll('.r2-item-btn.is-active').forEach(x => x.classList.remove('is-active'));
+    page.querySelectorAll('.r2-item-btn.is-active')
+      .forEach(x => x.classList.remove('is-active'));
     const btn = page.querySelector(`.r2-item-btn[data-id="${item.id}"]`);
     if (btn) btn.classList.add('is-active');
 
@@ -212,10 +215,12 @@ function initReport2() {
     zoomState.scale = Math.min(3, +(zoomState.scale + 0.1).toFixed(2));
     applyZoom();
   });
+
   page.querySelector('.r2-zoom-out')?.addEventListener('click', () => {
     zoomState.scale = Math.max(1, +(zoomState.scale - 0.1).toFixed(2));
     applyZoom();
   });
+
   page.querySelector('.r2-zoom-reset')?.addEventListener('click', () => {
     zoomState.scale = 1;
     applyZoom();
