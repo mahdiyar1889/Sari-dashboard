@@ -349,3 +349,23 @@ button, input{
 .report-meta{
   text-align:center;
 }
+
+/* =========================
+   Mobile adjustments
+========================= */
+@media (max-width: 768px){
+
+  .intro-title{
+    font-size:28px;     /* قبلاً 48px */
+    line-height:1.6;
+  }
+
+  .intro-top-text{
+    font-size:15px;
+    margin-bottom:20px;
+  }
+
+  .intro-caption{
+    font-size:15px;
+  }
+}
