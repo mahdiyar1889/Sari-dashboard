@@ -32,7 +32,7 @@ window.Pages.report2 = `
     <div class="report-header">
       <!-- Right title (اول میاد تا در RTL سمت راست بنشیند) -->
       <div class="report-header-right">
-        <div class="report-header-title">نقشه‌ها</div>
+        <div class="report-header-title">فایل نقشه ها</div>
 
         <!-- فقط در چاپ نمایش داده می‌شود -->
         <div class="report-print-meta">
@@ -59,7 +59,7 @@ window.Pages.report2 = `
 
         <div class="report-divider"></div>
 
-        <h2 class="report-main-title">نقشه‌ها</h2>
+        <h2 class="report-main-title">فایل نقشه ها</h2>
         <p class="report-subtitle">(معماری، سازه، تاسیسات، و غیره)</p>
         <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
 
