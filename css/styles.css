@@ -139,7 +139,7 @@ button, input{
 /* Intro – Basmala */
 .intro-top-text{
   font-size:18px;        /* درشت‌تر */
-  font-weight:700;
+  font-weight:400;      /* غیر بولد */
   margin-bottom:28px;    /* فاصله بیشتر با عنوان */
   color:#374151;
 }
