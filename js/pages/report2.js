@@ -18,19 +18,16 @@ function makeReport2Code() {
 }
 
 /* =========================
-   Page: report2
-   (Built on your existing report-page styles)
+   Page: report2 (Maps)
 ========================= */
 window.Pages.report2 = `
 <div id="report2" class="report-page">
   <div class="report-container">
 
-    <!-- Header -->
     <div class="report-header">
       <div class="report-header-right">
         <div class="report-header-title">داشبورد تعاملی پروژه‌ها و نقشه ضوابط پهنه‌بندی</div>
 
-        <!-- Print only -->
         <div class="report-print-meta">
           <span class="report-print-code"></span>
           <span class="report-print-date"></span>
@@ -43,13 +40,12 @@ window.Pages.report2 = `
       </div>
     </div>
 
-    <!-- Body -->
     <div class="report-body">
       <div class="report-card">
 
         <div class="r2-grid">
 
-          <!-- Main -->
+          <!-- main -->
           <div class="r2-main">
 
             <div class="r2-card">
@@ -82,7 +78,7 @@ window.Pages.report2 = `
 
           </div>
 
-          <!-- Sidebar -->
+          <!-- sidebar -->
           <aside class="r2-side">
             <div class="r2-side-title">پهنه‌ها</div>
             <div class="r2-accordion" id="r2Accordion"></div>
@@ -110,7 +106,7 @@ function initReport2() {
   if (dateEl) dateEl.textContent = `تاریخ: ${getTodayJalali()}`;
   if (codeEl) codeEl.textContent = `کد گزارش: ${makeReport2Code()}`;
 
-  // DATA (your map file is here ✅)
+  // ✅ Data (فعلاً همان نقشه شما)
   const mapsData = [
     {
       groupId: 'S1',
@@ -140,7 +136,7 @@ function initReport2() {
     desc: page.querySelector('#r2Desc')
   };
 
-  // zoom
+  // zoom state
   const zoomState = { scale: 1 };
 
   function applyZoom() {
@@ -158,7 +154,7 @@ function initReport2() {
     if (els.desc) els.desc.textContent = item.desc || '—';
 
     page.querySelectorAll('.r2-item-btn.is-active').forEach(x => x.classList.remove('is-active'));
-    const btn = page.querySelector(\`.r2-item-btn[data-id="\${item.id}"]\`);
+    const btn = page.querySelector(`.r2-item-btn[data-id="${item.id}"]`);
     if (btn) btn.classList.add('is-active');
 
     zoomState.scale = 1;
@@ -186,7 +182,7 @@ function initReport2() {
       `;
     }).join('');
 
-    // toggle
+    // accordion toggle
     acc.querySelectorAll('.r2-acc-head').forEach(head => {
       head.addEventListener('click', () => {
         const sec = head.closest('.r2-acc');
@@ -225,6 +221,7 @@ function initReport2() {
     applyZoom();
   });
 
+  // wheel zoom
   const wrap = page.querySelector('.r2-map-wrap');
   wrap?.addEventListener('wheel', (e) => {
     e.preventDefault();
