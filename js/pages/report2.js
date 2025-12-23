@@ -1,10 +1,8 @@
 window.Pages = window.Pages || {};
 
 /* =========================
-   Helpers (اگر قبلاً در report1.js یا فایل مشترک داری، این بخش را تکرار نکن)
+   Helpers
 ========================= */
-
-// تاریخ شمسی امروز (YYYY/MM/DD)
 function getTodayJalali() {
   const d = new Date();
   return new Intl.DateTimeFormat('fa-IR', {
@@ -14,7 +12,6 @@ function getTodayJalali() {
   }).format(d);
 }
 
-// کد گزارش مخصوص report2
 function makeReport2Code() {
   const today = getTodayJalali().replace(/\//g, '-');
   return `R2-${today}`;
@@ -22,26 +19,24 @@ function makeReport2Code() {
 
 /* =========================
    Page: report2
+   (Built on your existing report-page styles)
 ========================= */
-
 window.Pages.report2 = `
 <div id="report2" class="report-page">
   <div class="report-container">
 
     <!-- Header -->
     <div class="report-header">
-      <!-- Right title (اول میاد تا در RTL سمت راست بنشیند) -->
       <div class="report-header-right">
-        <div class="report-header-title">فایل نقشه ها</div>
+        <div class="report-header-title">داشبورد تعاملی پروژه‌ها و نقشه ضوابط پهنه‌بندی</div>
 
-        <!-- فقط در چاپ نمایش داده می‌شود -->
+        <!-- Print only -->
         <div class="report-print-meta">
           <span class="report-print-code"></span>
           <span class="report-print-date"></span>
         </div>
       </div>
 
-      <!-- Left actions -->
       <div class="report-actions">
         <button class="btn-lite report-back" type="button">بازگشت</button>
         <button class="btn-lite logout-any" type="button">خروج</button>
@@ -52,16 +47,48 @@ window.Pages.report2 = `
     <div class="report-body">
       <div class="report-card">
 
-        <div class="report-logos-row">
-          <img src="logo-left.jpg" alt="">
-          <img src="logo-right.jpg" alt="">
+        <div class="r2-grid">
+
+          <!-- Main -->
+          <div class="r2-main">
+
+            <div class="r2-card">
+              <div class="r2-map-wrap">
+                <img class="r2-map-img" alt="نقشه" />
+
+                <button class="r2-zoom r2-zoom-in" type="button">+</button>
+                <button class="r2-zoom r2-zoom-out" type="button">−</button>
+                <button class="r2-zoom r2-zoom-reset" type="button">⟲</button>
+              </div>
+            </div>
+
+            <div class="r2-card r2-mt">
+              <div class="r2-details-title" id="r2DetailsTitle">—</div>
+
+              <div class="r2-details-grid">
+                <div>
+                  <div class="r2-details-sub">مشخصات پروژه</div>
+                  <div class="r2-kv"><span>کد پهنه:</span><b id="r2ZoneCode">—</b></div>
+                  <div class="r2-kv"><span>موقعیت:</span><b id="r2Location">—</b></div>
+                  <div class="r2-kv"><span>مساحت:</span><b id="r2Area">—</b></div>
+                </div>
+
+                <div>
+                  <div class="r2-details-sub">توضیحات</div>
+                  <div class="r2-details-text" id="r2Desc">—</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="r2-side">
+            <div class="r2-side-title">پهنه‌ها</div>
+            <div class="r2-accordion" id="r2Accordion"></div>
+          </aside>
+
         </div>
-
-        <div class="report-divider"></div>
-
-        <h2 class="report-main-title">فایل نقشه ها</h2>
-        <p class="report-subtitle">(معماری، سازه، تاسیسات، و غیره)</p>
-        <p class="report-meta">بر اساس طرح مصوب – مردادماه ۱۴۰۴</p>
 
       </div>
     </div>
@@ -71,23 +98,138 @@ window.Pages.report2 = `
 `;
 
 /* =========================
-   Init: report2
-   (بعد از render کردن report2 صدا بزن)
+   Init report2
 ========================= */
-
 function initReport2() {
   const page = document.getElementById('report2');
   if (!page) return;
 
+  // print meta
   const dateEl = page.querySelector('.report-print-date');
   const codeEl = page.querySelector('.report-print-code');
+  if (dateEl) dateEl.textContent = `تاریخ: ${getTodayJalali()}`;
+  if (codeEl) codeEl.textContent = `کد گزارش: ${makeReport2Code()}`;
 
-  if (dateEl) {
-    dateEl.textContent = `تاریخ: ${getTodayJalali()}`;
+  // DATA (your map file is here ✅)
+  const mapsData = [
+    {
+      groupId: 'S1',
+      groupTitle: 'پهنه S1 - عرصه ورودی',
+      items: [
+        {
+          id: 'S1-sport',
+          title: 'مجموعه ورزشی و شهر بازی مدرن',
+          zoneCode: 'S12/S13',
+          location: 'ورودی شهرک',
+          area: '434,289 م.م',
+          desc: 'مجموعه ورزشی، شهر بازی و فضاهای پشتیبان مطابق طرح مصوب.',
+          img: 'maps/your-map-like-screenshot.png'
+        }
+      ]
+    }
+  ];
+
+  const acc = page.querySelector('#r2Accordion');
+  const mapImg = page.querySelector('.r2-map-img');
+
+  const els = {
+    title: page.querySelector('#r2DetailsTitle'),
+    zone: page.querySelector('#r2ZoneCode'),
+    loc: page.querySelector('#r2Location'),
+    area: page.querySelector('#r2Area'),
+    desc: page.querySelector('#r2Desc')
+  };
+
+  // zoom
+  const zoomState = { scale: 1 };
+
+  function applyZoom() {
+    if (!mapImg) return;
+    mapImg.style.transform = `scale(${zoomState.scale})`;
   }
 
-  if (codeEl) {
-    codeEl.textContent = `کد گزارش: ${makeReport2Code()}`;
+  function setActive(item) {
+    if (mapImg) mapImg.src = item.img;
+
+    if (els.title) els.title.textContent = item.title || '—';
+    if (els.zone) els.zone.textContent = item.zoneCode || '—';
+    if (els.loc) els.loc.textContent = item.location || '—';
+    if (els.area) els.area.textContent = item.area || '—';
+    if (els.desc) els.desc.textContent = item.desc || '—';
+
+    page.querySelectorAll('.r2-item-btn.is-active').forEach(x => x.classList.remove('is-active'));
+    const btn = page.querySelector(\`.r2-item-btn[data-id="\${item.id}"]\`);
+    if (btn) btn.classList.add('is-active');
+
+    zoomState.scale = 1;
+    applyZoom();
   }
+
+  function renderAccordion() {
+    if (!acc) return;
+
+    acc.innerHTML = mapsData.map((g) => {
+      const itemsHtml = g.items.map(it => `
+        <button type="button" class="r2-item-btn" data-id="${it.id}">
+          ${it.title}
+        </button>
+      `).join('');
+
+      return `
+        <section class="r2-acc is-open">
+          <button type="button" class="r2-acc-head">
+            <span>${g.groupTitle}</span>
+            <span class="r2-acc-caret">▾</span>
+          </button>
+          <div class="r2-acc-body">${itemsHtml}</div>
+        </section>
+      `;
+    }).join('');
+
+    // toggle
+    acc.querySelectorAll('.r2-acc-head').forEach(head => {
+      head.addEventListener('click', () => {
+        const sec = head.closest('.r2-acc');
+        if (!sec) return;
+        sec.classList.toggle('is-open');
+      });
+    });
+
+    // item click
+    acc.querySelectorAll('.r2-item-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const item = mapsData.flatMap(g => g.items).find(x => x.id === id);
+        if (item) setActive(item);
+      });
+    });
+  }
+
+  renderAccordion();
+
+  // initial
+  const initial = mapsData[0]?.items?.[0];
+  if (initial) setActive(initial);
+
+  // zoom controls
+  page.querySelector('.r2-zoom-in')?.addEventListener('click', () => {
+    zoomState.scale = Math.min(3, +(zoomState.scale + 0.1).toFixed(2));
+    applyZoom();
+  });
+  page.querySelector('.r2-zoom-out')?.addEventListener('click', () => {
+    zoomState.scale = Math.max(1, +(zoomState.scale - 0.1).toFixed(2));
+    applyZoom();
+  });
+  page.querySelector('.r2-zoom-reset')?.addEventListener('click', () => {
+    zoomState.scale = 1;
+    applyZoom();
+  });
+
+  const wrap = page.querySelector('.r2-map-wrap');
+  wrap?.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.08 : 0.08;
+    zoomState.scale = Math.min(3, Math.max(1, +(zoomState.scale + delta).toFixed(2)));
+    applyZoom();
+  }, { passive: false });
 }
-
