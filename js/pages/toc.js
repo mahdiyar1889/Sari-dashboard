@@ -19,28 +19,28 @@ window.Pages.toc = `
       </div>
 
       <div class="toc-card" data-target="report2">
-        <div class="toc-card-title">نقشه‌ها</div>
+        <div class="toc-card-title">فایل نقشه ها</div>
         <div class="toc-card-subtitle">(معماری، سازه، تاسیسات، و رندرها)</div>
       </div>
 
       <div class="toc-card" data-target="report3">
-        <div class="toc-card-title">داشبورد مدیریتی برآورد هزینه</div>
-        <div class="toc-card-subtitle">برآورد هزینه‌های زیرساختی</div>
+        <div class="toc-card-title">برنامه زمانبندی</div>
+        <div class="toc-card-subtitle">مطالعات مقدماتی، فاز اول، فاز دوم، برآورد مقادیر و هزینه</div>
       </div>
 
       <div class="toc-card" data-target="report4">
-        <div class="toc-card-title">داشبورد راهبری اولویت‌بندی پروژه‌ها</div>
-        <div class="toc-card-subtitle">اولویت‌بندی پروژه‌های زیرساختی</div>
+        <div class="toc-card-title">برآورد مقادیر و هزینه</div>
+        <div class="toc-card-subtitle">متره، آیتم های فهرست بها</div>
       </div>
 
       <div class="toc-card" data-target="report5">
-        <div class="toc-card-title">داشبورد تحلیلی پروژه‌های سرمایه‌گذاری</div>
-        <div class="toc-card-subtitle">تحلیل پروژه‌های بالقوه</div>
+        <div class="toc-card-title">اسناد مناقصه</div>
+        <div class="toc-card-subtitle">برآورد هزینه‌ها ...</div>
       </div>
 
       <div class="toc-card" data-target="report6">
-        <div class="toc-card-title">بسته‌های پیشنهادی پروژه‌های بالقوه</div>
-        <div class="toc-card-subtitle">معرفی بسته‌های سرمایه‌گذاری</div>
+        <div class="toc-card-title">صورتجلسات</div>
+        <div class="toc-card-subtitle">...</div>
       </div>
     </div>
 
