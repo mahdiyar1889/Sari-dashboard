@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const AUTH_KEY   = "isLoggedIn";
 
   const app = document.getElementById("app");
+  const Pages = window.Pages; // ✅ خیلی مهم
 
   // Inject all pages
   app.innerHTML =
@@ -30,8 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     hideAll();
     const el = document.getElementById(id);
     if(!el) return;
+
     el.style.display = (id === "loginPage" || id === "introPage") ? "flex" : "block";
     window.scrollTo(0,0);
+
+    // ✅ فقط برای report2
+    if (id === "report2" && typeof initReport2 === "function") {
+      initReport2();
+    }
   }
 
   function isLoggedIn(){
@@ -74,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // TOC cards -> reports
   document.querySelectorAll(".toc-card").forEach(card => {
     card.addEventListener("click", function(){
-      const target = this.getAttribute("data-target");
+      const target = this.getAttribute("data-target"); // مثل report2
       if(target) showPage(target);
     });
   });
@@ -88,16 +95,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("logoutBtn1")?.addEventListener("click", logout);
   document.getElementById("logoutBtn2")?.addEventListener("click", logout);
   document.querySelectorAll(".logout-any").forEach(btn => btn.addEventListener("click", logout));
-});
-
-document.addEventListener("click", (e) => {
-  // بازگشت از reportها به فهرست
-  if (e.target.closest(".report-back")) {
-    showPage("toc");
-  }
-
-  // خروج از هرجا
-  if (e.target.closest(".logout-any")) {
-    logout();
-  }
 });
